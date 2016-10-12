@@ -1,0 +1,59 @@
+# TODO: support function callbacks
+#' @export
+shinyalert <- function(
+  title = "",
+  text = "",
+  type = c("", "warning", "error", "success", "info", "input"),
+  allowEscapeKey = TRUE,
+  customClass = NULL,
+  allowOutsideClick = FALSE,
+  showCancelButton = FALSE,
+  showConfirmButton = TRUE,
+  confirmButtonText = "OK",
+  confirmButtonColor = "#AEDEF4",
+  cancelButtonText = "Cancel",
+  closeOnConfirm = TRUE,
+  closeOnCancel = TRUE,
+  imageUrl = NULL,
+  imageSize = "80x80",
+  timer = NULL,
+  html = FALSE,
+  animation = TRUE,
+  inputType = "text",
+  inputPlaceholder = NULL,
+  inputValue = NULL,
+  showLoaderOnConfirm = FALSE
+) {
+
+  type <- match.arg(type)
+  params <- as.list(environment())
+
+  session <- getSession()
+
+  session$sendCustomMessage(type = "shinyalert", message = params)
+
+  invisible(NULL)
+}
+
+#' @export
+useShinyalert <- function() {
+  shiny::addResourcePath("resources",
+                         system.file("www", package = "shinyalert"))
+
+  shiny::singleton(
+    shiny::tags$head(
+      shiny::tags$script(
+        src = file.path("resources", "shared", "sweetalert-1.0.1",
+                        "js", "sweetalert.min.js")
+      ),
+      shiny::tags$link(
+        rel = "stylesheet",
+        href = file.path("resources", "shared", "sweetalert-1.0.1",
+                        "css", "sweetalert.min.css")
+      ),
+      shiny::tags$script(
+        src = file.path("resources", "srcjs", "shinyalert.js")
+      )
+    )
+  )
+}
