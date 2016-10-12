@@ -5,7 +5,7 @@ shinyalert <- function(
   text = "",
   type = c("", "warning", "error", "success", "info", "input"),
   allowEscapeKey = TRUE,
-  customClass = NULL,
+  customClass = "",
   allowOutsideClick = FALSE,
   showCancelButton = FALSE,
   showConfirmButton = TRUE,
@@ -20,9 +20,10 @@ shinyalert <- function(
   html = FALSE,
   animation = TRUE,
   inputType = "text",
-  inputPlaceholder = NULL,
-  inputValue = NULL,
-  showLoaderOnConfirm = FALSE
+  inputPlaceholder = "",
+  inputValue = "",
+  showLoaderOnConfirm = FALSE,
+  callback = NULL
 ) {
 
   type <- match.arg(type)
