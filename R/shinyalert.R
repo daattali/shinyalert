@@ -23,13 +23,29 @@ shinyalert <- function(
   inputPlaceholder = "",
   inputValue = "",
   showLoaderOnConfirm = FALSE,
-  callback = NULL
+  callback = NULL,
+  callbackR = NULL
 ) {
 
   type <- match.arg(type)
   params <- as.list(environment())
 
   session <- getSession()
+
+  if (!is.null(callbackR)) {
+    cbid <- sprintf("shinyalert-%s-%s",
+                    digest::digest(params),
+                    as.integer(stats::runif(1, 0, 1e9)))
+    params['cbid'] <- cbid
+    shiny::observeEvent(session$input[[cbid]], {
+      if (length(formals(callbackR)) == 0) {
+        callbackR()
+      } else {
+        callbackR(session$input[[cbid]])
+      }
+    })
+    params[['callbackR']] <- NULL
+  }
 
   session$sendCustomMessage(type = "shinyalert", message = params)
 

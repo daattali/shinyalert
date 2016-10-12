@@ -21,6 +21,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   shinyEnv <- environment()
+  ggg<-5
 
   observeEvent(input$run, {
     shinyjs::hide("error")
@@ -35,6 +36,13 @@ server <- function(input, output, session) {
       }
     )
   })
+
+  ccc <- function(aa) {
+    cat("IM HERE")
+    cat(aa)
+    cat('a')
+  }
+
 }
 
 shinyApp(ui = ui, server = server)
