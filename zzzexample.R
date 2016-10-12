@@ -6,7 +6,7 @@ ui <- fluidPage(
   shinyjs::useShinyjs(),
   useShinyalert(),
   textInput("expr", label = "Enter an R expression",
-            value = "shinyalert('hello')",width="600px"),
+            value = "shinyalert('hello',callbackJS='alert', callbackR=message, type='input')",width="600px"),
   actionButton("run", "Run", class = "btn-success"),
   shinyjs::hidden(
     div(

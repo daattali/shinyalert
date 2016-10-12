@@ -1,4 +1,3 @@
-# TODO: support function callbacks
 #' @export
 shinyalert <- function(
   title = "",
@@ -23,8 +22,8 @@ shinyalert <- function(
   inputPlaceholder = "",
   inputValue = "",
   showLoaderOnConfirm = FALSE,
-  callback = NULL,
-  callbackR = NULL
+  callbackR = NULL,
+  callbackJS = NULL
 ) {
 
   type <- match.arg(type)
