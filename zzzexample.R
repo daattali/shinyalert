@@ -21,6 +21,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   shinyEnv <- environment()
+
   ggg <- 5
 
   observeEvent(input$run, {
