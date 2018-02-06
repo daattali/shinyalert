@@ -1,6 +1,4 @@
 Shiny.addCustomMessageHandler('shinyalert', function(params) {
-  console.log(params);
-
   var callbackJS = function(value) {};
   if (params['callbackJS'] != null) {
     var cb = params['callbackJS'];
