@@ -1,9 +1,3 @@
-# no css file is nice, but all other changes make it harder for the user
-# dont need `useShinyalert()``
-# add a close() method
-# add a timer that calls close() after x milliseconds
-# what are the available inputType options?
-
 library(shiny)
 library(shinyjs)
 library(shinyalert)
