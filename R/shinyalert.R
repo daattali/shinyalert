@@ -48,6 +48,8 @@
 #' @param callbackJS A JavaScript function to call when the modal exits. The
 #' value of the modal is passed to this function as an argument. See the
 #' \code{callbackR} arugment for more information on the value of the modal.
+#'
+#' You can retrieve the value of the modal with \code{input$shinyalert}.
 #' @export
 shinyalert <- function(
   title = "",
@@ -91,6 +93,7 @@ shinyalert <- function(
 
   session <- getSession()
 
+  # If an R callback function is provided, create an observer for it
   if (!is.null(callbackR)) {
     cbid <- sprintf("shinyalert-%s-%s",
                     digest::digest(params),
@@ -116,6 +119,7 @@ shinyalert <- function(
 close_alert <- function() {
   session <- getSession()
   session$sendCustomMessage(type = "shinyalert.close", message = "")
+  invisible(NULL)
 }
 
 #' @export
