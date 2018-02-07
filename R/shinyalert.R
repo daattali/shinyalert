@@ -106,9 +106,16 @@ shinyalert <- function(
     params[['callbackR']] <- NULL
   }
 
-  session$sendCustomMessage(type = "shinyalert", message = params)
+  session$sendCustomMessage(type = "shinyalert.show", message = params)
 
   invisible(NULL)
+}
+
+#' The callback functions are not called when the modal is forced to close.
+#' @export
+close_alert <- function() {
+  session <- getSession()
+  session$sendCustomMessage(type = "shinyalert.close", message = "")
 }
 
 #' @export

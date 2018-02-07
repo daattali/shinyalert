@@ -1,4 +1,4 @@
-Shiny.addCustomMessageHandler('shinyalert', function(params) {
+Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   var callbackJS = function(value) {};
   if (params['callbackJS'] != null) {
     var cb = params['callbackJS'];
@@ -20,4 +20,8 @@ Shiny.addCustomMessageHandler('shinyalert', function(params) {
     callbackR(value);
   }
   swal(params, callback);
+});
+
+Shiny.addCustomMessageHandler('shinyalert.close', function(message) {
+  swal.close();
 });
