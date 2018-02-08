@@ -16,9 +16,10 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   var callback = function(value) {
-    Shiny.onInputChange("shinyalert", value);
+    Shiny.onInputChange(params['returnId'], value);
     callbackJS(value);
     callbackR(value);
+    delete params['returnId'];
   }
 
   swal(params, callback);

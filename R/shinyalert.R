@@ -79,17 +79,17 @@ shinyalert <- function(
   params <- as.list(environment())
 
   # Rename some parameters that shinyalert tries to use more sensible names for
-  params['customClass'] <- params['className']
-  params['allowEscapeKey'] <- params['closeOnEsc']
-  params['allowOutsideClick'] <- params['closeOnClickOutside']
-  params['confirmButtonColor'] <- params['confirmButtonCol']
-  params['imageSize'] <- paste0(params['imageWidth'], "x", params['imageHeight'])
-  params['closeOnEsc'] <- NULL
-  params['className'] <- NULL
-  params['closeOnClickOutside'] <- NULL
-  params['confirmButtonCol'] <- NULL
-  params['imageWidth'] <- NULL
-  params['imageHeight'] <- NULL
+  params[['customClass']] <- params[['className']]
+  params[['allowEscapeKey']] <- params[['closeOnEsc']]
+  params[['allowOutsideClick']] <- params[['closeOnClickOutside']]
+  params[['confirmButtonColor']] <- params[['confirmButtonCol']]
+  params[['imageSize']] <- paste0(params[['imageWidth']], "x", params[['imageHeight']])
+  params[['closeOnEsc']] <- NULL
+  params[['className']] <- NULL
+  params[['closeOnClickOutside']] <- NULL
+  params[['confirmButtonCol']] <- NULL
+  params[['imageWidth']] <- NULL
+  params[['imageHeight']] <- NULL
 
   session <- getSession()
 
@@ -98,7 +98,7 @@ shinyalert <- function(
     cbid <- sprintf("shinyalert-%s-%s",
                     digest::digest(params),
                     as.integer(stats::runif(1, 0, 1e9)))
-    params['cbid'] <- cbid
+    params[['cbid']] <- session$ns(cbid)
     shiny::observeEvent(session$input[[cbid]], {
       if (length(formals(callbackR)) == 0) {
         callbackR()
@@ -109,6 +109,7 @@ shinyalert <- function(
     params[['callbackR']] <- NULL
   }
 
+  params[["returnId"]] <- session$ns("shinyalert")
   session$sendCustomMessage(type = "shinyalert.show", message = params)
 
   invisible(NULL)
