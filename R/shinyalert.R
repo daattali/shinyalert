@@ -119,14 +119,6 @@ shinyalert <- function(
   invisible(NULL)
 }
 
-#' The callback functions are not called when the modal is forced to close.
-#' @export
-close_alert <- function() {
-  session <- getSession()
-  session$sendCustomMessage(type = "shinyalert.close", message = "")
-  invisible(NULL)
-}
-
 #' @export
 useShinyalert <- function() {
   shiny::addResourcePath("resources",
@@ -148,4 +140,13 @@ useShinyalert <- function() {
       )
     )
   )
+}
+
+#' TODO
+#' The callback functions are not called when the modal is forced to close.
+#' @export
+closeAlert <- function() {
+  session <- getSession()
+  session$sendCustomMessage(type = "shinyalert.close", message = "")
+  invisible(NULL)
 }
