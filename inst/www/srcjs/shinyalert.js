@@ -1,4 +1,9 @@
+shinyalert = {};
+shinyalert.num = 0;
+
 Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
+  shinyalert.num++;
+
   var callbackJS = function(value) {};
   if (params['callbackJS'] != null) {
     var cb = params['callbackJS'];
@@ -21,6 +26,15 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     callbackR(value);
     delete params['returnId'];
   }
+
+  if (params['timer'] != 0) {
+    setTimeout(function(x) {
+      if (x == shinyalert.num) {
+        swal.close();
+      }
+    }, params['timer'], shinyalert.num);
+  }
+  delete params['timer'];
 
   swal(params, callback);
 });

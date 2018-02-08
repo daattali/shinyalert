@@ -9,7 +9,7 @@ shinyalert(title = "", text = "", type = c("", "warning", "error",
   closeOnClickOutside = FALSE, html = FALSE, showCancelButton = FALSE,
   showConfirmButton = TRUE, inputType = "text", inputValue = "",
   inputPlaceholder = "", confirmButtonText = "OK",
-  confirmButtonCol = "#AEDEF4", cancelButtonText = "Cancel",
+  confirmButtonCol = "#AEDEF4", cancelButtonText = "Cancel", timer = 0,
   animation = TRUE, imageUrl = NULL, imageWidth = 100,
   imageHeight = 100, className = "", callbackR = NULL,
   callbackJS = NULL)
@@ -59,6 +59,10 @@ text in the input.}
 
 \item{cancelButtonText}{The text in the "Cancel" button.}
 
+\item{timer}{The amount of time (in milliseconds) before the modal should
+close automatically. Use \code{0} to not close the modal automatically
+(default). If the modal closes automatically, there is no return value.}
+
 \item{animation}{If \code{FALSE}, the modal's animation will be disabled.
 Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 \code{"slide-from-bottom"}, \code{"pop"} (the default animation when
@@ -80,7 +84,9 @@ is an input field, the value of the modal is the value the user entered.}
 
 \item{callbackJS}{A JavaScript function to call when the modal exits. The
 value of the modal is passed to this function as an argument. See the
-\code{callbackR} arugment for more information on the value of the modal.}
+\code{callbackR} arugment for more information on the value of the modal.
+
+You can retrieve the value of the modal with \code{input$shinyalert}.}
 }
 \description{
 shinyalert

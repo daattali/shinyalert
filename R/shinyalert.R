@@ -32,6 +32,9 @@
 #' @param confirmButtonCol The background colour of the "OK" button
 #' (must be a HEX value).
 #' @param cancelButtonText The text in the "Cancel" button.
+#' @param timer The amount of time (in milliseconds) before the modal should
+#' close automatically. Use \code{0} to not close the modal automatically
+#' (default). If the modal closes automatically, there is no return value.
 #' @param animation If \code{FALSE}, the modal's animation will be disabled.
 #' Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 #' \code{"slide-from-bottom"}, \code{"pop"} (the default animation when
@@ -66,6 +69,7 @@ shinyalert <- function(
   confirmButtonText = "OK",
   confirmButtonCol = "#AEDEF4",
   cancelButtonText = "Cancel",
+  timer = 0,
   animation = TRUE,
   imageUrl = NULL,
   imageWidth = 100,
