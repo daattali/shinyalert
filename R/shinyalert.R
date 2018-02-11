@@ -118,35 +118,3 @@ shinyalert <- function(
 
   invisible(NULL)
 }
-
-#' @export
-useShinyalert <- function() {
-  shiny::addResourcePath("resources",
-                         system.file("www", package = "shinyalert"))
-
-  shiny::singleton(
-    shiny::tags$head(
-      shiny::tags$script(
-        src = file.path("resources", "shared", "sweetalert-1.0.1",
-                        "js", "sweetalert.min.js")
-      ),
-      shiny::tags$link(
-        rel = "stylesheet",
-        href = file.path("resources", "shared", "sweetalert-1.0.1",
-                        "css", "sweetalert.min.css")
-      ),
-      shiny::tags$script(
-        src = file.path("resources", "srcjs", "shinyalert.js")
-      )
-    )
-  )
-}
-
-#' TODO
-#' The callback functions are not called when the modal is forced to close.
-#' @export
-closeAlert <- function() {
-  session <- getSession()
-  session$sendCustomMessage(type = "shinyalert.close", message = "")
-  invisible(NULL)
-}

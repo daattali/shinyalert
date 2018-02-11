@@ -1,5 +1,5 @@
 shinyalert = {};
-shinyalert.num = 0;
+shinyalert.num = 0;  // Used to make the timer work
 
 Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   shinyalert.num++;

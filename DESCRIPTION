@@ -9,7 +9,7 @@ Description: Easily create pretty popup messages (modals) in Shiny. A modal can
 URL: https://deanattali.com/shinyalert
 BugReports: https://github.com/daattali/shinyalert/issues
 Depends:
-    R
+    R (>= 3.0.2)
 Imports:
     digest,
     shiny (>= 1.0.4),
