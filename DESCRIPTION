@@ -1,12 +1,24 @@
 Package: shinyalert
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: 'shinyalert' makes popup messages easy and pretty.
-License: What license is it under?
-Imports: shiny (>= 1.0)
-Encoding: UTF-8
+Title: Easily create pretty popup messages (modals) in Shiny.
+Version: 1.0
+Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
+    role = c("aut", "cre"))
+Description: Easily create pretty popup messages (modals) in Shiny. A modal can
+    contain text, images, OK/Cancel buttons, an input to get a response from the
+    user, and many more customizable options.
+URL: https://deanattali.com/shinyalert
+BugReports: https://github.com/daattali/shinyalert/issues
+Depends:
+    R
+Imports:
+    digest,
+    shiny (>= 1.0.4),
+    stats
+Suggests:
+    knitr,
+    rmarkdown
+License: MIT + file LICENSE
+SystemRequirements: pandoc with https support
 LazyData: true
+VignetteBuilder: knitr
 RoxygenNote: 6.0.1
