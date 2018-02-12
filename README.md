@@ -72,20 +72,15 @@ Overview
 
 `shinyalert` uses the [sweetalert](https://github.com/t4t5/sweetalert)
 JavaScript library to create simple and elegant popups (modals) in
-Shiny.
-
-Simply call `shinyalert()` with the desired arguments, such as a title
-and text, and a modal will show up (don't worry, there are many other
-arguments to customize the modal).
+Shiny. Simply call `shinyalert()` with the desired arguments, such as a
+title and text, and a modal will show up.
 
 In order to be able to call `shinyalert()` in a Shiny app, you must
 first call `useShinyalert()` anywhere in the app's UI.
 
-Here is a basic modal created with `shinyalert`:
-
 ![basic modal](inst/img/shinyalert-basic.gif "fig:")
 
-And the corresponding minimal Shiny app that creates this modal:
+Here is some minimal Shiny app code that creates the above modal:
 
     library(shiny)
     library(shinyalert)
