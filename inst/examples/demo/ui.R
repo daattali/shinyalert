@@ -2,8 +2,8 @@ library(shiny)
 
 share <- list(
   title = "shinyalert package",
-  url = "http://daattali.com/shiny/shinyalert-demo/",
-  image = "http://daattali.com/shiny/img/shinyalert.png",
+  url = "https://daattali.com/shiny/shinyalert-demo/",
+  image = "https://daattali.com/shiny/img/shinyalert.png",
   description = "Easily create pretty popup messages (modals) in Shiny",
   twitter_user = "daattali"
 )
@@ -13,7 +13,7 @@ fluidPage(
   tags$head(
     includeCSS(file.path('www', 'style.css')),
     # Favicon
-    tags$link(rel = "shortcut icon", type="image/x-icon", href="http://daattali.com/shiny/img/favicon.ico"),
+    tags$link(rel = "shortcut icon", type="image/x-icon", href="https://daattali.com/shiny/img/favicon.ico"),
     # Facebook OpenGraph tags
     tags$meta(property = "og:title", content = share$title),
     tags$meta(property = "og:type", content = "website"),
@@ -45,12 +45,12 @@ fluidPage(
           "Easily create pretty popup messages (modals) in Shiny"),
       div(id = "subsubtitle",
           "Created by",
-          tags$a(href = "http://deanattali.com/", "Dean Attali"),
+          tags$a(href = "https://deanattali.com/", "Dean Attali"),
           HTML("&bull;"),
           "Available",
           tags$a(href = "https://github.com/daattali/shinyalert", "on GitHub"),
           HTML("&bull;"),
-          tags$a(href = "http://daattali.com/shiny/", "More apps"), "by Dean"
+          tags$a(href = "https://daattali.com/shiny/", "More apps"), "by Dean"
       )
   ),
 

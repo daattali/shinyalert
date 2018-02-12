@@ -10,6 +10,6 @@ runExample()
 Launch an example Shiny app that shows how easy it is to
 create modals with \code{shinyalert}.\cr\cr
 The demo app is also
-\href{http://daattali.com/shiny/shinyalert-demo/}{available online}
+\href{https://daattali.com/shiny/shinyalert-demo/}{available online}
 to experiment with.
 }

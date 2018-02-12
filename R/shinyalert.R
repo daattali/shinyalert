@@ -1,13 +1,13 @@
 #' Display a popup message (modal) in Shiny
 #'
 #' A modal can contain text, images, OK/Cancel buttons, an input to get a
-#' response from the user, and many more customizable options.\cr\cr
-#' The value of the modal can be retrieved in Shiny using
-#' \code{input$shinyalert}.\cr\cr
+#' response from the user, and many more customizable options. The value of the
+#' modal can be retrieved in Shiny using \code{input$shinyalert} or using the
+#' two callback parameters. See the
+#' \href{https://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
+#' online for examples.\cr\cr
 #' \code{shinyalert} must be initialized with a call to
-#' \code{\link[shinyalert]{useShinyalert}} in the app's UI.\cr\cr
-#' See the \href{http://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
-#' online for examples.
+#' \code{\link[shinyalert]{useShinyalert}} in the app's UI.
 #'
 #' @param title The title of the modal.
 #' @param text The modal's text.
@@ -26,22 +26,24 @@
 #' @param showCancelButton If \code{TRUE}, a "Cancel" button will be shown,
 #' which the user can click on to dismiss the modal.
 #' @param showConfirmButton If \code{TRUE}, a "OK" button
-#' will be shown. Make sure to either use \code{timer}, \code{closeOnEsc}, or
-#' \code{closeOnClickOutside} to allow the user a way to close the modal.
+#' will be shown. If \code{FALSE}, make sure to either use \code{timer},
+#' \code{closeOnEsc}, or \code{closeOnClickOutside} to allow the user a way to
+#' close the modal.
 #' @param inputType When using \code{type="input"}, change the type of the input
 #' field. The input type can be \code{"number"}, \code{"text"},
 #' \code{"password"}, or any other valid HTML input type.
 #' @param inputValue When using \code{type="input"}, specify a default
 #' value that you want the input to show initially.
 #' @param inputPlaceholder When using \code{type="input"}, specify a placeholder
-#' text in the input.
+#' text for the input.
 #' @param confirmButtonText The text in the "OK" button.
 #' @param confirmButtonCol The background colour of the "OK" button
 #' (must be a HEX value).
 #' @param cancelButtonText The text in the "Cancel" button.
 #' @param timer The amount of time (in milliseconds) before the modal should
 #' close automatically. Use \code{0} to not close the modal automatically
-#' (default). If the modal closes automatically, there is no return value.
+#' (default). If the modal closes automatically, no value is returned from the
+#' modal. See the section 'Callbacks and return value' below.
 #' @param animation If \code{FALSE}, the modal's animation will be disabled.
 #' Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 #' \code{"slide-from-bottom"}, \code{"pop"} (the default animation when
@@ -50,15 +52,48 @@
 #' @param imageWidth Width of the custom image icon, in pixels.
 #' @param imageHeight Height of the custom image icon, in pixels.
 #' @param className A custom CSS class name for the modal's container.
-#' @param callbackR An R function to call when the modal exits. The value of the
-#' modal is passed to this function as an argument. When there is no input field
-#' in the modal, the value of the modal is either \code{TRUE} or \code{FALSE}
-#' depending if the user clicked "OK" or exited/canceled the modal. When there
-#' is an input field, the value of the modal is the value the user entered.
-#' @param callbackJS A JavaScript function to call when the modal exits. The
-#' value of the modal is passed to this function as an argument. See the
-#' \code{callbackR} arugment for more information on the value of the modal.
+#' @param callbackR An R function to call when the modal exits. See the section
+#' 'Callbacks and return value' below.
+#' @param callbackJS A JavaScript function to call when the modal exits. See the
+#' section 'Callbacks and return value' below.
+#' @section Callbacks and return value:
+#' Usually the purpose of a modal is simply informative, to show some
+#' information to the user. However, the modal can also have a return value.
+#' When there is an input field in the modal, the value of the modal is the
+#' value the user entered. When there is no input field in the modal, the value
+#' of the modal is \code{TRUE} if the user clicked the "OK" button, and
+#' \code{FALSE} if the user clicked the "Cancel" button.
+#'
+#' When the user exits the modal using the Escape button and by clicking outside
+#' of the modal, the return value is \code{FALSE}. If a timer is used to close
+#' the modal, no value is returned from the modal.
+#'
+#' The return value of the modal can be accessed via \code{input$shinyalert}
+#' in the Shiny server's code. The return value of the modal is also passed as
+#' an argument to the \code{callbackR} and \code{callbackJS} functions if they
+#' are provided. For example, using \code{callbackR=function(x) message(x)}
+#' will print the return value of the modal to the R console as a message, and
+#' \code{callbackJS='function(x) {alert(x);}'} will cause a native JavaScript
+#' alert message to show the return value.
 #' @seealso \code{\link[shinyalert]{useShinyalert}}
+#' @examples
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shinyalert)
+#'
+#'   shinyApp(
+#'     ui = fluidPage(
+#'       useShinyalert(),  # Set up shinyalert
+#'       actionButton("btn", "Click me")
+#'     ),
+#'     server = function(input, output) {
+#'       observeEvent(input$btn, {
+#'         # Show a simple modal
+#'         shinyalert(title = "You did it!", type = "success")
+#'       })
+#'     }
+#'   )
+#' }
 #' @export
 shinyalert <- function(
   title = "",

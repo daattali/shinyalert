@@ -9,6 +9,7 @@
 #' @examples
 #' if (interactive()) {
 #'   library(shiny)
+#'   library(shinyalert)
 #'
 #'   shinyApp(
 #'     ui = fluidPage(

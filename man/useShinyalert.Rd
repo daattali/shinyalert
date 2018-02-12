@@ -18,6 +18,7 @@ You can call \code{useShinyalert()} from anywhere inside the UI.
 \examples{
 if (interactive()) {
   library(shiny)
+  library(shinyalert)
 
   shinyApp(
     ui = fluidPage(
