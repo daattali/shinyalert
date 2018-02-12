@@ -1,9 +1,9 @@
 Package: shinyalert
-Title: Easily create pretty popup messages (modals) in Shiny.
+Title: Easily Create Pretty Popup Messages (Modals) in Shiny
 Version: 1.0
 Authors@R: person("Dean", "Attali", email = "daattali@gmail.com",
     role = c("aut", "cre"))
-Description: Easily create pretty popup messages (modals) in Shiny. A modal can
+Description: Easily create pretty popup messages (modals) in 'Shiny'. A modal can
     contain text, images, OK/Cancel buttons, an input to get a response from the
     user, and many more customizable options.
 URL: https://github.com/daattali/shinyalert https://daattali.com/shiny/shinyalert-demo/
