@@ -64,7 +64,7 @@
 #' of the modal is \code{TRUE} if the user clicked the "OK" button, and
 #' \code{FALSE} if the user clicked the "Cancel" button.
 #'
-#' When the user exits the modal using the Escape button and by clicking outside
+#' When the user exits the modal using the Escape key or by clicking outside
 #' of the modal, the return value is \code{FALSE}. If a timer is used to close
 #' the modal, no value is returned from the modal.
 #'
