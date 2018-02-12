@@ -1,5 +1,5 @@
 Package: shinyalert
-Title: Easily Create Pretty Popup Messages (Modals) in Shiny
+Title: Easily Create Pretty Popup Messages (Modals) in 'Shiny'
 Version: 1.0
 Authors@R: c(
     person("Dean", "Attali", email = "daattali@gmail.com",
