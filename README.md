@@ -1,7 +1,7 @@
 <p align="center">
 
 <a href="https://github.com/daattali/shinyalert/">
-<img src="inst/img/shinyalert-logo-whitebg.png" alt="shinyalert" width=300 height=100 />
+<img src="inst/img/shinyalert-logo-whitebg.png" alt="shinyalert" width=470 height=100 />
 </a>
 
 <h3 align="center">
@@ -13,7 +13,7 @@ shinyalert
 <h4 align="center">
 
 Easily create pretty popup messages (modals) in Shiny <br><br>
-<a href="https://github.com/daattali/shinyalert/">Official website</a> ·
+<a href="https://daattali.com/shiny/shinyalert-demo/">Demo</a> ·
 Copyright 2018 <a href="https://deanattali.com">Dean Attali</a>
 
 </h4>
@@ -53,3 +53,37 @@ developing open-source R packages\!**
 </a>
 
 </p>
+
+<h2 id="samples">
+
+Sample modals
+
+</h2>
+
+![basic modal](inst/img/shinyalert-basic.gif "fig:")
+
+![input modal](inst/img/shinyalert-input.gif "fig:")
+
+<h2 id="usage">
+
+How to use
+
+</h2>
+
+In order to be able to call `shinyalert()` in a Shiny app to create
+modals, you must first call `useShinyalert()` anywhere in the app's UI.
+
+<h2 id="install">
+
+Installation
+
+</h2>
+
+To install the stable CRAN version:
+
+    install.packages("shinyalert")
+
+To install the latest development version from GitHub:
+
+    install.packages("devtools")
+    devtools::install_github("daattali/shinyalert")
