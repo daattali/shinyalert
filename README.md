@@ -61,6 +61,7 @@ developing open-source R packages\!**
   - [Input modals](#input-modals)
   - [Modal return value](#return-value)
   - [Callbacks](#callbacks)
+  - [Comparison with Shiny modals](#shiny-comparison)
   - [Contributions](#contributions)
 
 <h2 id="overview">
@@ -140,7 +141,7 @@ will be a text input, but you can use other HTML input types by
 specifying the `inputType` parameter. For example, `inputType =
 "number"` will provide the user with a numeric input in the modal.
 
-See the *[Modal reutrn value](#return-value)* and
+See the *[Modal return value](#return-value)* and
 *[Callbacks](#callbacks)* sections below for information on how to
 access the value entered by the user.
 
@@ -164,7 +165,8 @@ closes automatically as a result of the timer, no value is returned from
 the modal.
 
 The return value of the modal can be accessed via `input$shinyalert` in
-the Shiny server's code, as if it were a regular Shiny input.
+the Shiny server's code, as if it were a regular Shiny input. The return
+value can also be accessed using the *[modal callbacks](#callbacks)*.
 
 <h2 id="callbacks">
 
@@ -172,15 +174,15 @@ Callbacks
 
 </h2>
 
-The return value of the modal is also passed as an argument to the
+The return value of the modal is passed as an argument to the
 `callbackR` and `callbackJS` functions (if a `callbackR` or `callbackJS`
 arguments are provided). These are functions that get called, either in
-R or in JavaScript, when the modal closes.
+R or in JavaScript, when the modal exits.
 
 For example, using the following `shinyalert` code will result in a
 modal with an input field. After the user clicks "OK", a hello message
 will be printed to both the R console and in a native JavaScript alert
-box. Not both callback functions have to be provided, but in this
+box. You don't need to provide both callback functions, but in this
 example both are used for demonstration.
 
     shinyalert(
@@ -208,7 +210,21 @@ Comparison with Shiny modals
 
 </h2>
 
-only one input, less flexible, simpler and prettier. callbacks, timer
+Doesn't Shiny already have support for modals?
+
+Yes, it does.
+
+And Shiny's modals are more powerful in some ways than `shinyalert`
+modals. Shiny's native modals (using the `showModal()` and
+`modalDialog()` functions) can contain multiple input fields and even
+outputs.
+
+I created `shinyalert` for two reasons: first of all, I started working
+on it before Shiny had modals. But I decided to keep working on it and
+release it even afterwards because I find `shinyalert` to be simpler to
+use and I think it results in much nicer modals. There are also some
+extra features in `shinyalert`, such as the callback functions and the
+timer. But ultimately it's a matter of convenience and aesthetics.
 
 <h2 id="contributions">
 
