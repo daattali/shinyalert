@@ -1,7 +1,7 @@
 #' Set up a Shiny app to use shinyalert
 #'
 #' This function must be called from a Shiny app's UI in order for the
-#' \code{\link[shinyalert]{shinyalert()}} function to work.\cr\cr
+#' \code{\link[shinyalert]{shinyalert}} function to work.\cr\cr
 #' You can call \code{useShinyalert()} from anywhere inside the UI.
 #'
 #' @return Scripts that \code{shinyalert} requires that are automatically

@@ -2,10 +2,9 @@
 % Please edit documentation in R/shinyalert.R
 \name{shinyalert}
 \alias{shinyalert}
-\title{shinyalert}
+\title{Display a popup message (modal) in Shiny}
 \usage{
-shinyalert(title = "", text = "", type = c("", "warning", "error",
-  "success", "info", "input"), closeOnEsc = TRUE,
+shinyalert(title = "", text = "", type = "", closeOnEsc = TRUE,
   closeOnClickOutside = FALSE, html = FALSE, showCancelButton = FALSE,
   showConfirmButton = TRUE, inputType = "text", inputValue = "",
   inputPlaceholder = "", confirmButtonText = "OK",
@@ -84,10 +83,18 @@ is an input field, the value of the modal is the value the user entered.}
 
 \item{callbackJS}{A JavaScript function to call when the modal exits. The
 value of the modal is passed to this function as an argument. See the
-\code{callbackR} arugment for more information on the value of the modal.
-
-You can retrieve the value of the modal with \code{input$shinyalert}.}
+\code{callbackR} arugment for more information on the value of the modal.}
 }
 \description{
-shinyalert
+A modal can contain text, images, OK/Cancel buttons, an input to get a
+response from the user, and many more customizable options.\cr\cr
+The value of the modal can be retrieved in Shiny using
+\code{input$shinyalert}.\cr\cr
+\code{shinyalert} must be initialized with a call to
+\code{\link[shinyalert]{useShinyalert}} in the app's UI.\cr\cr
+See the \href{http://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
+online for examples.
+}
+\seealso{
+\code{\link[shinyalert]{useShinyalert}}
 }

@@ -1,6 +1,13 @@
-#' shinyalert
+#' Display a popup message (modal) in Shiny
 #'
-#' shinyalert
+#' A modal can contain text, images, OK/Cancel buttons, an input to get a
+#' response from the user, and many more customizable options.\cr\cr
+#' The value of the modal can be retrieved in Shiny using
+#' \code{input$shinyalert}.\cr\cr
+#' \code{shinyalert} must be initialized with a call to
+#' \code{\link[shinyalert]{useShinyalert}} in the app's UI.\cr\cr
+#' See the \href{http://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
+#' online for examples.
 #'
 #' @param title The title of the modal.
 #' @param text The modal's text.
@@ -51,13 +58,12 @@
 #' @param callbackJS A JavaScript function to call when the modal exits. The
 #' value of the modal is passed to this function as an argument. See the
 #' \code{callbackR} arugment for more information on the value of the modal.
-#'
-#' You can retrieve the value of the modal with \code{input$shinyalert}.
+#' @seealso \code{\link[shinyalert]{useShinyalert}}
 #' @export
 shinyalert <- function(
   title = "",
   text = "",
-  type = c("", "warning", "error", "success", "info", "input"),
+  type = "",
   closeOnEsc = TRUE,
   closeOnClickOutside = FALSE,
   html = FALSE,
@@ -79,8 +85,17 @@ shinyalert <- function(
   callbackJS = NULL
 ) {
 
-  type <- match.arg(type)
   params <- as.list(environment())
+
+  if (timer < 0) {
+    stop("timer cannot be negative.", call. = FALSE)
+  }
+  if (!type %in% c("", "warning", "error", "success", "info", "input")) {
+    stop("type=", type, " is not supported.", call. = FALSE)
+  }
+  if (!is.null(imageUrl) && imageUrl == "") {
+    imageUrl <- NULL
+  }
 
   # Rename some parameters that shinyalert tries to use more sensible names for
   params[['customClass']] <- params[['className']]

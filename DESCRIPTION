@@ -15,6 +15,7 @@ Imports:
     shiny (>= 1.0.4),
     stats
 Suggests:
+    colourpicker,
     knitr,
     rmarkdown
 License: MIT + file LICENSE
