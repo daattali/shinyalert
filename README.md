@@ -72,11 +72,12 @@ Overview
 
 `shinyalert` uses the [sweetalert](https://github.com/t4t5/sweetalert)
 JavaScript library to create simple and elegant popups (modals) in
-Shiny. Simply call `shinyalert()` with the desired arguments, such as a
-title and text, and a modal will show up.
+Shiny.
 
-In order to be able to call `shinyalert()` in a Shiny app, you must
-first call `useShinyalert()` anywhere in the app's UI.
+Simply call `shinyalert()` with the desired arguments, such as a title
+and text, and a modal will show up. In order to be able to call
+`shinyalert()` in a Shiny app, you must first call `useShinyalert()`
+anywhere in the app's UI.
 
 ![basic modal](inst/img/shinyalert-basic.gif "fig:")
 
@@ -210,16 +211,15 @@ Doesn't Shiny already have support for modals?
 Yes, it does.
 
 And Shiny's modals are more powerful in some ways than `shinyalert`
-modals. Shiny's native modals (using the `showModal()` and
-`modalDialog()` functions) can contain multiple input fields and even
-outputs.
+modals: Shiny's native modals (`showModal()`+`modalDialog()`) can
+contain multiple input fields and even outputs.
 
 I created `shinyalert` for two reasons: first of all, I started working
-on it before Shiny had modals. But I decided to keep working on it and
-release it even afterwards because I find `shinyalert` to be simpler to
-use and I think it results in much nicer modals. There are also some
-extra features in `shinyalert`, such as the callback functions and the
-timer. But ultimately it's a matter of convenience and aesthetics.
+on it well before Shiny had modals. But I decided to keep working on it
+and release it even afterwards because I find `shinyalert` to be easier
+to use and to result in much nicer modals. There are also some extra
+features in `shinyalert`, such as the callback functions and the timer.
+But ultimately it's a matter of convenience and aesthetics.
 
 <h2 id="contributions">
 
@@ -229,9 +229,9 @@ Contributions
 
 If you have any suggestions or feedback, I would love to hear about it.
 You can either [message me directly](https://deanattali.com/contact),
-[open an issue](https://github.com/daattali/shinyjs/issues) if you want
-to request a feature/report a bug, or make a pull request if you can
-contribute.
+[open an issue](https://github.com/daattali/shinyalert/issues) if you
+want to request a feature/report a bug, or make a pull request if you
+can contribute.
 
 Lastly, if you find shinyalert useful, please consider [supporting
 me](https://www.paypal.me/daattali/20) for the countless hours I've

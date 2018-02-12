@@ -89,7 +89,8 @@ response from the user, and many more customizable options. The value of the
 modal can be retrieved in Shiny using \code{input$shinyalert} or using the
 two callback parameters. See the
 \href{https://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
-online for examples.\cr\cr
+online for examples or read the
+\href{https://github.com/daattali/shinyalert#readme}{full README}.\cr\cr
 \code{shinyalert} must be initialized with a call to
 \code{\link[shinyalert]{useShinyalert}} in the app's UI.
 }
