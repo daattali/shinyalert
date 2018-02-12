@@ -43,8 +43,10 @@ the modal can be retrieved in Shiny using an input or using callback
 functions. See the [demo Shiny
 app](https://daattali.com/shiny/shinyalert-demo/) online for examples.
 
-**If you find shinyalert useful, please consider supporting my efforts
-developing open-source R packages\!**
+**If you need any Shiny help, I'm [available for
+consulting](http://attalitech.com/). If you find shinyalert useful,
+please consider supporting my efforts developing open-source R
+packages\!**
 
 <p align="center">
 
