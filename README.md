@@ -59,7 +59,8 @@ developing open-source R packages\!**
   - [Overview](#overview)
   - [Installation](#install)
   - [Input modals](#input-modals)
-  - [Callbacks and return values](#callbacks)
+  - [Modal return value](#return-value)
+  - [Callbacks](#callbacks)
   - [Contributions](#contributions)
 
 <h2 id="overview">
@@ -72,12 +73,12 @@ Overview
 JavaScript library to create simple and elegant popups (modals) in
 Shiny.
 
-Simply call `shinyalert()` with the desired parameters, such as a title
+Simply call `shinyalert()` with the desired arguments, such as a title
 and text, and a modal will show up (don't worry, there are many other
-parameters to customize the modal).
+arguments to customize the modal).
 
-In order to be able to call `shinyalert()` in a Shiny app to create
-modals, you must first call `useShinyalert()` anywhere in the app's UI.
+In order to be able to call `shinyalert()` in a Shiny app, you must
+first call `useShinyalert()` anywhere in the app's UI.
 
 Here is a basic modal created with `shinyalert`:
 
@@ -139,16 +140,17 @@ will be a text input, but you can use other HTML input types by
 specifying the `inputType` parameter. For example, `inputType =
 "number"` will provide the user with a numeric input in the modal.
 
-See the [Callbacks and return values](#callbacks) section below for
-information on how to access the value entered by the user.
+See the *[Modal reutrn value](#return-value)* and
+*[Callbacks](#callbacks)* sections below for information on how to
+access the value entered by the user.
 
-<h2 id="callbacks">
+<h2 id="return-value">
 
-Callbacks and return values
+Modal return value
 
 </h2>
 
-Modals created with `shinyalert` have a return value when they close.
+Modals created with `shinyalert` have a return value when they exit.
 
 When there is an input field in the modal (`type="input"`), the value of
 the modal is the value the user entered. When there is no input field in
@@ -156,18 +158,30 @@ the modal, the value of the modal is `TRUE` if the user clicked the "OK"
 button, and `FALSE` if the user clicked the "Cancel" button.
 
 When the user exits the modal using the Escape key or by clicking
-outside of the modal, the return value is `FALSE`. If the `timer`
-parameter is used and the modal closes automatically as a result of the
-timer, no value is returned from the modal.
+outside of the modal, the return value is `FALSE` (as if the "Cancel"
+button was clicked). If the `timer` parameter is used and the modal
+closes automatically as a result of the timer, no value is returned from
+the modal.
 
 The return value of the modal can be accessed via `input$shinyalert` in
-the Shiny server's code, as if it were a regular Shiny input. The return
-value of the modal is also passed as an argument to the `callbackR` and
-`callbackJS` functions if they are provided.
+the Shiny server's code, as if it were a regular Shiny input.
 
-For example, using the following code will result in a modal containing
-an input field, and after the user clicks "OK", a hello message will be
-printed to both the R console and in a native JavaScript alert box.
+<h2 id="callbacks">
+
+Callbacks
+
+</h2>
+
+The return value of the modal is also passed as an argument to the
+`callbackR` and `callbackJS` functions (if a `callbackR` or `callbackJS`
+arguments are provided). These are functions that get called, either in
+R or in JavaScript, when the modal closes.
+
+For example, using the following `shinyalert` code will result in a
+modal with an input field. After the user clicks "OK", a hello message
+will be printed to both the R console and in a native JavaScript alert
+box. Not both callback functions have to be provided, but in this
+example both are used for demonstration.
 
     shinyalert(
       "Enter your name", type = "input",
