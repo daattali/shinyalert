@@ -37,11 +37,12 @@ Copyright 2018 <a href="https://deanattali.com">Dean Attali</a>
 `shinyalert` lets you easily create pretty popup messages (modals) in
 Shiny.
 
-A modal can contain text, images, OK/Cancel buttons, an input to get a
-response from the user, and many more customizable options. The value of
-the modal can be retrieved in Shiny using an input or using callback
-functions. See the [demo Shiny
-app](https://daattali.com/shiny/shinyalert-demo/) online for examples.
+Modals can contain text, images, OK/Cancel buttons, an input to get a
+response from the user, and many more customizable options. A modal can
+also have a timer to close automatically. The value of the modal can be
+retrieved in Shiny using an input or using callback functions. See the
+[demo Shiny app](https://daattali.com/shiny/shinyalert-demo/) online for
+examples.
 
 **If you need any Shiny help, I'm [available for
 consulting](http://attalitech.com/). If you find shinyalert useful,
@@ -102,13 +103,6 @@ Here is some minimal Shiny app code that creates the above modal:
     
     shinyApp(ui, server)
 
-It's also possible to ask the user to enter input in a modal.
-
-![input modal](inst/img/shinyalert-input.gif "fig:")
-
-The modal can also have a "Cancel" button, as well as many other
-customizable options.
-
 <h2 id="install">
 
 Installation
@@ -133,6 +127,8 @@ Input modals
 Usually the purpose of a modal is simply informative, to show some
 information to the user. However, the modal can also be used to retrieve
 an input from the user by setting the `type = "input"` parameter.
+
+![input modal](inst/img/shinyalert-input.gif "fig:")
 
 Only a single input can be used inside a modal. By default, the input
 will be a text input, but you can use other HTML input types by
@@ -239,3 +235,7 @@ Lastly, if you find shinyalert useful, please consider [supporting
 me](https://www.paypal.me/daattali/20) for the countless hours I've
 spent building, documenting, and supporting various open-source packages
 :)
+
+If you're interested in the history of this package, you can read the
+[blog post](https://deanattali.com/blog/shinyalert-package) I created
+when releasing the package.
