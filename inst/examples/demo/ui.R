@@ -114,13 +114,13 @@ fluidPage(
   fluidRow(
     "Modal return value (useful when ", tags$code('type="input"'), "):",
     textOutput("return", inline = TRUE),
-    br(),
-    tags$a("Show code", href = "javascript:void()",
-           `data-toggle` = "collapse", `data-target` = "#code-container"),
+    br(), br(),
     div(
       id = "code-container",
       class = "collapse",
       verbatimTextOutput("code")
-    )
+    ),
+    tags$button("Show code", href = "javascript:void()", class = "btn btn-default",
+           `data-toggle` = "collapse", `data-target` = "#code-container"), br(), br()
   )
 )
