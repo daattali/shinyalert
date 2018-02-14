@@ -12,7 +12,7 @@ clean:
 
 README.md : vignettes/shinyalert.Rmd
 #	echo "Rendering the shinyalert vignette"
-	Rscript -e 'rmarkdown::render("vignettes/shinyalert.Rmd", output_format = "md_document", output_options = list(pandoc_args = c("-t", "commonmark")))'
+	Rscript -e 'rmarkdown::render("vignettes/shinyalert.Rmd", output_format = "md_document", output_options = list(pandoc_args = c("-t", "commonmark+raw_html")))'
 #	echo "Correcting image paths"
 #	sed -i -- 's,../inst,inst,g' vignettes/shinyalert.md
 	Rscript -e 'file <- gsub("\\.\\./inst", "inst", readLines("vignettes/shinyalert.md")); writeLines(file, "vignettes/shinyalert.md")'

@@ -44,7 +44,7 @@ retrieved in Shiny using an input or using callback functions. See the
 [demo Shiny app](https://daattali.com/shiny/shinyalert-demo/) online for
 examples.
 
-**If you need any Shiny help, I'm [available for
+**If you need any Shiny help, I’m [available for
 consulting](http://attalitech.com/). If you find shinyalert useful,
 please consider supporting my efforts developing open-source R
 packages\!**
@@ -80,9 +80,9 @@ Shiny.
 Simply call `shinyalert()` with the desired arguments, such as a title
 and text, and a modal will show up. In order to be able to call
 `shinyalert()` in a Shiny app, you must first call `useShinyalert()`
-anywhere in the app's UI.
+anywhere in the app’s UI.
 
-![basic modal](inst/img/shinyalert-basic.gif "fig:")
+![basic modal](inst/img/shinyalert-basic.gif)
 
 Here is some minimal Shiny app code that creates the above modal:
 
@@ -128,7 +128,7 @@ Usually the purpose of a modal is simply informative, to show some
 information to the user. However, the modal can also be used to retrieve
 an input from the user by setting the `type = "input"` parameter.
 
-![input modal](inst/img/shinyalert-input.gif "fig:")
+![input modal](inst/img/shinyalert-input.gif)
 
 Only a single input can be used inside a modal. By default, the input
 will be a text input, but you can use other HTML input types by
@@ -149,17 +149,17 @@ Modals created with `shinyalert` have a return value when they exit.
 
 When there is an input field in the modal (`type="input"`), the value of
 the modal is the value the user entered. When there is no input field in
-the modal, the value of the modal is `TRUE` if the user clicked the "OK"
-button, and `FALSE` if the user clicked the "Cancel" button.
+the modal, the value of the modal is `TRUE` if the user clicked the “OK”
+button, and `FALSE` if the user clicked the “Cancel” button.
 
 When the user exits the modal using the Escape key or by clicking
-outside of the modal, the return value is `FALSE` (as if the "Cancel"
+outside of the modal, the return value is `FALSE` (as if the “Cancel”
 button was clicked). If the `timer` parameter is used and the modal
 closes automatically as a result of the timer, no value is returned from
 the modal.
 
 The return value of the modal can be accessed via `input$shinyalert` in
-the Shiny server's code, as if it were a regular Shiny input. The return
+the Shiny server’s code, as if it were a regular Shiny input. The return
 value can also be accessed using the *[modal callbacks](#callbacks)*.
 
 <h2 id="callbacks">
@@ -174,9 +174,9 @@ arguments are provided). These are functions that get called, either in
 R or in JavaScript, when the modal exits.
 
 For example, using the following `shinyalert` code will result in a
-modal with an input field. After the user clicks "OK", a hello message
+modal with an input field. After the user clicks “OK”, a hello message
 will be printed to both the R console and in a native JavaScript alert
-box. You don't need to provide both callback functions, but in this
+box. You don’t need to provide both callback functions, but in this
 example both are used for demonstration.
 
     shinyalert(
@@ -204,12 +204,12 @@ Comparison with Shiny modals
 
 </h2>
 
-Doesn't Shiny already have support for modals?
+Doesn’t Shiny already have support for modals?
 
 Yes, it does.
 
-And Shiny's modals are more powerful in some ways than `shinyalert`
-modals: Shiny's native modals (`showModal()`+`modalDialog()`) can
+And Shiny’s modals are more powerful in some ways than `shinyalert`
+modals: Shiny’s native modals (`showModal()`+`modalDialog()`) can
 contain multiple input fields and even outputs.
 
 I created `shinyalert` for two reasons: first of all, I started working
@@ -217,7 +217,7 @@ on it well before Shiny had modals. But I decided to keep working on it
 and release it even afterwards because I find `shinyalert` to be easier
 to use and to result in much nicer modals. There are also some extra
 features in `shinyalert`, such as the callback functions and the timer.
-But ultimately it's a matter of convenience and aesthetics.
+But ultimately it’s a matter of convenience and aesthetics.
 
 <h2 id="contributions">
 
@@ -232,10 +232,10 @@ want to request a feature/report a bug, or make a pull request if you
 can contribute.
 
 Lastly, if you find shinyalert useful, please consider [supporting
-me](https://www.paypal.me/daattali/20) for the countless hours I've
+me](https://www.paypal.me/daattali/20) for the countless hours I’ve
 spent building, documenting, and supporting various open-source packages
 :)
 
-If you're interested in the history of this package, you can read the
+If you’re interested in the history of this package, you can read the
 [blog post](https://deanattali.com/blog/shinyalert-package) I created
 when releasing the package.
