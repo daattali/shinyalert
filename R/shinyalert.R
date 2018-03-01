@@ -57,6 +57,9 @@
 #' 'Modal return value' and 'Callbacks' sections below.
 #' @param callbackJS A JavaScript function to call when the modal exits. See the
 #' 'Modal return value' and 'Callbacks' sections below.
+#' @param inputId The input ID that will be used to retrieve the value of this
+#' modal (defualt: \code{"shinyalert"}). You can access the value of the modal
+#' with \code{input$<inputId>}.
 #' @section Input modals:
 #' Usually the purpose of a modal is simply informative, to show some
 #' information to the user. However, the modal can also be used to retrieve an
@@ -83,8 +86,9 @@
 #' clicked). If the \code{timer} parameter is used and the modal closes
 #' automatically as a result of the timer, no value is returned from the modal.
 #'
-#' The return value of the modal can be accessed via \code{input$shinyalert} in
-#' the Shiny server's code, as if it were a regular Shiny input. The return
+#' The return value of the modal can be accessed via \code{input$shinyalert}
+#' (or using a different input ID if you specify the \code{inputId} parameter)
+#' in the Shiny server's code, as if it were a regular Shiny input. The return
 #' value can also be accessed using the modal callbacks (see below).
 #'
 #' @section Callbacks:
@@ -162,7 +166,8 @@ shinyalert <- function(
   imageHeight = 100,
   className = "",
   callbackR = NULL,
-  callbackJS = NULL
+  callbackJS = NULL,
+  inputId = "shinyalert"
 ) {
 
   params <- as.list(environment())
@@ -208,7 +213,7 @@ shinyalert <- function(
     params[['callbackR']] <- NULL
   }
 
-  params[["returnId"]] <- session$ns("shinyalert")
+  params[["inputId"]] <- session$ns(params[["inputId"]])
   session$sendCustomMessage(type = "shinyalert.show", message = params)
 
   invisible(NULL)

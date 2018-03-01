@@ -21,10 +21,10 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   var callback = function(value) {
-    Shiny.onInputChange(params['returnId'], value);
+    Shiny.onInputChange(params['inputId'], value);
     callbackJS(value);
     callbackR(value);
-    delete params['returnId'];
+    delete params['inputId'];
   }
 
   if (params['timer'] != 0) {

@@ -128,7 +128,7 @@ When there is an input field in the modal (`type="input"`), the value of the mod
 
 When the user exits the modal using the Escape key or by clicking outside of the modal, the return value is `FALSE` (as if the "Cancel" button was clicked). If the `timer` parameter is used and the modal closes automatically as a result of the timer, no value is returned from the modal.
 
-The return value of the modal can be accessed via `input$shinyalert` in the Shiny server's code, as if it were a regular Shiny input. The return value can also be accessed using the *[modal callbacks](#callbacks)*.
+The return value of the modal can be accessed via `input$shinyalert` (or using a different input ID if you specify the `inputId` parameter) in the Shiny server's code, as if it were a regular Shiny input. The return value can also be accessed using the *[modal callbacks](#callbacks)*.
 
 <h2 id="callbacks">Callbacks</h2>
 

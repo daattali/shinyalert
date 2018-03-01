@@ -158,7 +158,8 @@ button was clicked). If the `timer` parameter is used and the modal
 closes automatically as a result of the timer, no value is returned from
 the modal.
 
-The return value of the modal can be accessed via `input$shinyalert` in
+The return value of the modal can be accessed via `input$shinyalert` (or
+using a different input ID if you specify the `inputId` parameter) in
 the Shiny server’s code, as if it were a regular Shiny input. The return
 value can also be accessed using the *[modal callbacks](#callbacks)*.
 
