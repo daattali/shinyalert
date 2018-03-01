@@ -42,6 +42,10 @@ useShinyalert <- function() {
                          "css", "sweetalert.min.css")
       ),
       shiny::tags$script(
+        src = file.path("resources", "shared", "swalservice",
+                        "swalservice.min.js")
+      ),
+      shiny::tags$script(
         src = file.path("resources", "srcjs", "shinyalert.js")
       )
     )

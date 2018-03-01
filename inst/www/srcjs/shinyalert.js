@@ -1,3 +1,4 @@
+var swalService = new SwalService({showPendingMessage: false});
 shinyalert = {};
 shinyalert.num = 0;  // Used to make the timer work
 
@@ -30,15 +31,11 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   if (params['timer'] != 0) {
     setTimeout(function(x) {
       if (x == shinyalert.num) {
-        swal.close();
+        swalService.close();
       }
     }, params['timer'], shinyalert.num);
   }
   delete params['timer'];
 
-  swal(params, callback);
-});
-
-Shiny.addCustomMessageHandler('shinyalert.close', function(message) {
-  swal.close();
+  swalService.swal(params, callback);
 });

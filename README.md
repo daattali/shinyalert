@@ -59,13 +59,33 @@ packages\!**
 
 # Table of contents
 
+  - [Examples](#examples)
   - [Overview](#overview)
   - [Installation](#install)
   - [Input modals](#input-modals)
   - [Modal return value](#return-value)
   - [Callbacks](#callbacks)
+  - [Chaining modals](#chaining)
   - [Comparison with Shiny modals](#shiny-comparison)
   - [Contributions](#contributions)
+
+<h2 id="examples">
+
+Examples
+
+</h2>
+
+Example 1: [Simple modal](#overview)
+
+![basic modal](inst/img/shinyalert-basic.gif)
+
+Example 2: [Input modal](#input-modals)
+
+![input modal](inst/img/shinyalert-input.gif)
+
+Example 3: [Chaining modals](#chaining)
+
+![chaining modals](inst/img/shinyalert-chain.gif)
 
 <h2 id="overview">
 
@@ -82,9 +102,7 @@ and text, and a modal will show up. In order to be able to call
 `shinyalert()` in a Shiny app, you must first call `useShinyalert()`
 anywhere in the app’s UI.
 
-![basic modal](inst/img/shinyalert-basic.gif)
-
-Here is some minimal Shiny app code that creates the above modal:
+Here is some minimal Shiny app code that creates a modal:
 
     library(shiny)
     library(shinyalert)
@@ -127,8 +145,6 @@ Input modals
 Usually the purpose of a modal is simply informative, to show some
 information to the user. However, the modal can also be used to retrieve
 an input from the user by setting the `type = "input"` parameter.
-
-![input modal](inst/img/shinyalert-input.gif)
 
 Only a single input can be used inside a modal. By default, the input
 will be a text input, but you can use other HTML input types by
@@ -197,6 +213,21 @@ that case.
       "Enter your name", type = "input",
       callbackR = function(x) { if(x != FALSE) message("Hello ", x) },
       callbackJS = "function(x) { if (x !== false) { alert('Hello ' + x); } }"
+    )
+
+<h2 id="chaining">
+
+Chaining modals
+
+</h2>
+
+It’s possible to chain modals (call multiple modals one after another)
+by making a `shinyalert()` call inside a shinyalert callback or using
+the return value of a previous modal. For example:
+
+    shinyalert(
+      title = "What is your name?", type = "input",
+      callbackR = function(value) { shinyalert(paste("Welcome", value)) }
     )
 
 <h2 id="shiny-comparison">

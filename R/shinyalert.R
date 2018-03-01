@@ -124,8 +124,22 @@
 #'     callbackJS = "function(x) { if (x !== false) { alert('Hello ' + x); } }"
 #'   )
 #' }
+#'
+#' @section Chaining modals:
+#' It's possible to chain modals (call multiple modals one after another) by
+#' making a \code{shinyalert()} call inside a shinyalert callback or using the
+#' return value of a previous modal. For example:
+#'
+#' \preformatted{
+#'   shinyalert(
+#'     title = "What is your name?", type = "input",
+#'     callbackR = function(value) { shinyalert(paste("Welcome", value)) }
+#'   )
+#' }
 #' @seealso \code{\link[shinyalert]{useShinyalert}}
 #' @examples
+#'
+#' # Example 1: Simple modal
 #' if (interactive()) {
 #'   library(shiny)
 #'   library(shinyalert)
@@ -139,6 +153,27 @@
 #'       observeEvent(input$btn, {
 #'         # Show a simple modal
 #'         shinyalert(title = "You did it!", type = "success")
+#'       })
+#'     }
+#'   )
+#' }
+#'
+#' # Example 2: Input modal calling another modal in its callback
+#' if (interactive()) {
+#'   library(shiny)
+#'   library(shinyalert)
+#'
+#'   shinyApp(
+#'     ui = fluidPage(
+#'       useShinyalert(),  # Set up shinyalert
+#'       actionButton("btn", "Greet")
+#'     ),
+#'     server = function(input, output) {
+#'       observeEvent(input$btn, {
+#'         shinyalert(
+#'           title = "What is your name?", type = "input",
+#'           callbackR = function(value) { shinyalert(paste("Welcome", value)) }
+#'         )
 #'       })
 #'     }
 #'   )
