@@ -234,8 +234,15 @@ shinyalert <- function(
 
   # If an R callback function is provided, create an observer for it
   if (!is.null(callbackR)) {
+
+    # Don't serialize the R callback because if it's a function, its entire
+    # enclosing environment will be captured and it can potentially be huge
+    # and slow
+    paramsSerialize <- params
+    paramsSerialize[['callbackR']] <- NULL
+
     cbid <- sprintf("shinyalert-%s-%s",
-                    digest::digest(params),
+                    digest::digest(paramsSerialize),
                     as.integer(stats::runif(1, 0, 1e9)))
     params[['cbid']] <- session$ns(cbid)
     shiny::observeEvent(session$input[[cbid]], {
