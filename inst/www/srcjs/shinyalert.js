@@ -22,7 +22,12 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   var callback = function(value) {
-    Shiny.onInputChange(params['inputId'], value);
+    if ('compareVersion' in Shiny &&
+        Shiny.compareVersion(Shiny.version, ">=", "1.1.0") ) {
+      Shiny.setInputValue(params['inputId'], value, {priority: "event"});
+    } else {
+      Shiny.onInputChange(params['inputId'], value);
+    }
     callbackJS(value);
     callbackR(value);
     delete params['inputId'];

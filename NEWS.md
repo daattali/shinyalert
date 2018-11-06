@@ -5,6 +5,7 @@
 - New feature (#11): `inputId` parameter added, which allows you to set the input ID that is used to retrieve the return value of the modal
 - Slight documentation changes
 - small change to demo shiny app UI
+- the return value can now be triggered even if the same input value is used consecutively (only if using shiny version 1.1)
 
 # shinyalert 1.0
 
