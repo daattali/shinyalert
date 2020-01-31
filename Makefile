@@ -1,4 +1,4 @@
-  #!usr/bin/make -f
+#!usr/bin/make -f
 # All commands are run as R functions rather than shell commands so that it will work easily on any Windows machine, even if the Windows machine isn't properly set up with all the right tools
 
 all: README.md

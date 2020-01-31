@@ -4,7 +4,12 @@
 \alias{useShinyalert}
 \title{Set up a Shiny app to use shinyalert}
 \usage{
-useShinyalert()
+useShinyalert(rmd = FALSE)
+}
+\arguments{
+\item{rmd}{Set this to \code{TRUE} if using \code{shinyalert}
+inside an interactive R markdown document. The YAML of the Rmd file must have
+\code{runtime: shiny}.}
 }
 \value{
 Scripts that \code{shinyalert} requires that are automatically

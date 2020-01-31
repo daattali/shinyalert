@@ -66,6 +66,7 @@ packages\!**
   - [Modal return value](#return-value)
   - [Callbacks](#callbacks)
   - [Chaining modals](#chaining)
+  - [Using in Rmarkdown files](#rmd)
   - [Comparison with Shiny modals](#shiny-comparison)
   - [Contributions](#contributions)
 
@@ -229,6 +230,37 @@ the return value of a previous modal. For example:
       title = "What is your name?", type = "input",
       callbackR = function(value) { shinyalert(paste("Welcome", value)) }
     )
+
+<h2 id="rmd">
+
+Using in Rmarkdown files
+
+</h2>
+
+You can use `shinyalert` in Rmarkdown documents by using the `rmd =
+TRUE` parameter. This only works in interactive Rmd documents (when
+`runtime: shiny` is used in the YAML).
+
+    ---
+    output: html_document
+    runtime: shiny
+    ---
+    
+    ```{r setup, include=FALSE}
+    knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+    ```
+    
+    ```{r}
+    library(shinyalert)
+    
+    useShinyalert(rmd = TRUE)
+    textInput("name", "Name")
+    actionButton("button", "Click me")
+    
+    observeEvent(input$button, {
+     shinyalert(title = "Hey", text = input$name)
+    })
+    ```
 
 <h2 id="shiny-comparison">
 
