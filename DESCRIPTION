@@ -1,6 +1,6 @@
 Package: shinyalert
 Title: Easily Create Pretty Popup Messages (Modals) in 'Shiny'
-Version: 1.0.0.9005
+Version: 1.1
 Authors@R: c(
     person("Dean", "Attali", email = "daattali@gmail.com",
       role = c("aut", "cre"), comment = "R interface"),
@@ -26,4 +26,4 @@ License: MIT + file LICENSE
 SystemRequirements: pandoc with https support
 LazyData: true
 VignetteBuilder: knitr
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0

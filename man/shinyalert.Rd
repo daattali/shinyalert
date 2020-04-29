@@ -4,15 +4,31 @@
 \alias{shinyalert}
 \title{Display a popup message (modal) in Shiny}
 \usage{
-shinyalert(title = "", text = "", type = "", closeOnEsc = TRUE,
-  closeOnClickOutside = FALSE, html = FALSE,
-  showCancelButton = FALSE, showConfirmButton = TRUE,
-  inputType = "text", inputValue = "", inputPlaceholder = "",
-  confirmButtonText = "OK", confirmButtonCol = "#AEDEF4",
-  cancelButtonText = "Cancel", timer = 0, animation = TRUE,
-  imageUrl = NULL, imageWidth = 100, imageHeight = 100,
-  className = "", callbackR = NULL, callbackJS = NULL,
-  inputId = "shinyalert")
+shinyalert(
+  title = "",
+  text = "",
+  type = "",
+  closeOnEsc = TRUE,
+  closeOnClickOutside = FALSE,
+  html = FALSE,
+  showCancelButton = FALSE,
+  showConfirmButton = TRUE,
+  inputType = "text",
+  inputValue = "",
+  inputPlaceholder = "",
+  confirmButtonText = "OK",
+  confirmButtonCol = "#AEDEF4",
+  cancelButtonText = "Cancel",
+  timer = 0,
+  animation = TRUE,
+  imageUrl = NULL,
+  imageWidth = 100,
+  imageHeight = 100,
+  className = "",
+  callbackR = NULL,
+  callbackJS = NULL,
+  inputId = "shinyalert"
+)
 }
 \arguments{
 \item{title}{The title of the modal.}
