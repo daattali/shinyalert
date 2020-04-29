@@ -133,8 +133,8 @@ To install the stable CRAN version:
 
 To install the latest development version from GitHub:
 
-    install.packages("devtools")
-    devtools::install_github("daattali/shinyalert")
+    install.packages("remotes")
+    remotes::install_github("daattali/shinyalert")
 
 <h2 id="input-modals">
 
