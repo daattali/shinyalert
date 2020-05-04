@@ -255,8 +255,22 @@ shinyalert <- function(
     params[['callbackR']] <- NULL
   }
 
+  
+  if (html && nzchar(params[["text"]])) {
+    shiny::insertUI(
+      "head", "beforeEnd", immediate = FALSE,
+      shiny::tags$head(
+        htmltools::attachDependencies(
+          "",
+          htmltools::findDependencies(params[["text"]])
+        )
+      )
+    )
+    params[["text"]] <- as.character(params[["text"]])
+  }
+  
   params[["inputId"]] <- session$ns(params[["inputId"]])
   session$sendCustomMessage(type = "shinyalert.show", message = params)
-
+  
   invisible(NULL)
 }
