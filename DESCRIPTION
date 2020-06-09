@@ -22,6 +22,8 @@ Suggests:
     colourpicker,
     knitr,
     rmarkdown
+Remotes:
+    daattali/shinydisconnect
 License: MIT + file LICENSE
 SystemRequirements: pandoc with https support
 LazyData: true
