@@ -20,7 +20,7 @@ SwalService.prototype = {
     var pending = {
       args: arguments,
       id: this.nextId++
-    }
+    };
     return this._swalWithId(pending);
   },
 

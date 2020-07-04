@@ -260,3 +260,14 @@ shinyalert <- function(
 
   invisible(NULL)
 }
+
+
+#' Dismiss one or more popup messages
+#' @param n Number of popup messages to dismiss. If set to \code{NULL}, then
+#' all modals will be dismissed; default is \code{NULL}
+#' @export
+dismissalert <- function(n = NULL){
+  session <- getSession()
+  session$sendCustomMessage(type = "shinyalert.dismiss",
+                            message = list(count = n))
+}
