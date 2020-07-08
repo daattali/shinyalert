@@ -50,7 +50,7 @@ useShinyalert <- function(rmd = FALSE) {
       ),
       shiny::tags$script(
         src = file.path("resources", "shared", "swalservice",
-                        "swalservice.min.js")
+                        "swalservice.js")
       ),
       shiny::tags$script(
         src = file.path("resources", "srcjs", "shinyalert.js")

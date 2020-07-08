@@ -22,26 +22,29 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   var callback = function(value) {
+    console.log('callback!');
     // Remove instance immediately
     var ii = 0;
     for(ii in shinyalert.instances){
-      swalService.close( shinyalert.instances[ii].swal_id );
       if( shinyalert.instances[ii].cbid === cbid ){
         shinyalert.instances.splice( ii, 1 );
       }
       break;
     }
 
-
-    if ('compareVersion' in Shiny &&
-        Shiny.compareVersion(Shiny.version, ">=", "1.1.0") ) {
-      Shiny.setInputValue(params['inputId'], value, {priority: "event"});
-    } else {
-      Shiny.onInputChange(params['inputId'], value);
+    // Avoid duplicated callback called
+    if( typeof params['inputId'] === 'string' ){
+      if ('compareVersion' in Shiny &&
+          Shiny.compareVersion(Shiny.version, ">=", "1.1.0") ) {
+        Shiny.setInputValue(params['inputId'], value, {priority: "event"});
+      } else {
+        Shiny.onInputChange(params['inputId'], value);
+      }
+      callbackJS(value);
+      callbackR(value);
+      delete params['inputId'];
     }
-    callbackJS(value);
-    callbackR(value);
-    delete params['inputId'];
+
   }
 
   var timer = params['timer'];
@@ -58,10 +61,10 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     setTimeout(function(x) {
       var ii = 0;
       for(ii in shinyalert.instances){
-        swalService.close( x );
         if( shinyalert.instances[ii].swal_id === x ){
           shinyalert.instances.splice( ii, 1 );
         }
+        swalService.closeAndFireCallback( x, false );
         break;
       }
     }, timer, swal_id);
@@ -79,8 +82,8 @@ Shiny.addCustomMessageHandler('shinyalert.close', function(params) {
     for( i = 0; i < shinyalert.instances.length; i++ ){
       item = shinyalert.instances[i];
       if( item.cbid === cbid ){
-        swalService.close( item.swal_id );
         shinyalert.instances.splice( i, 1 );
+        swalService.closeAndFireCallback( item.swal_id, false );
         break;
       }
     }
@@ -88,7 +91,7 @@ Shiny.addCustomMessageHandler('shinyalert.close', function(params) {
     // dismiss n alerts
     item = shinyalert.instances.splice(0, n);
     for( i = 0; i < item.length; i++ ){
-      swalService.close( item[i].swal_id );
+      swalService.closeAndFireCallback( item[i].swal_id, false );
     }
   }
 
