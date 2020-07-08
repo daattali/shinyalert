@@ -22,6 +22,17 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   var callback = function(value) {
+    // Remove instance immediately
+    var ii = 0;
+    for(ii in shinyalert.instances){
+      swalService.close( shinyalert.instances[ii].swal_id );
+      if( shinyalert.instances[ii].cbid === cbid ){
+        shinyalert.instances.splice( ii, 1 );
+      }
+      break;
+    }
+
+
     if ('compareVersion' in Shiny &&
         Shiny.compareVersion(Shiny.version, ">=", "1.1.0") ) {
       Shiny.setInputValue(params['inputId'], value, {priority: "event"});
@@ -47,10 +58,10 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     setTimeout(function(x) {
       var ii = 0;
       for(ii in shinyalert.instances){
+        swalService.close( x );
         if( shinyalert.instances[ii].swal_id === x ){
           shinyalert.instances.splice( ii, 1 );
         }
-        swalService.close( x );
         break;
       }
     }, timer, swal_id);
