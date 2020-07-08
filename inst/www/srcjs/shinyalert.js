@@ -52,7 +52,7 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
 
 });
 
-Shiny.addCustomMessageHandler('shinyalert.dismiss', function(params) {
+Shiny.addCustomMessageHandler('shinyalert.close', function(params) {
   var n = (params && params.count) || shinyalert.indices.length,
       ids = shinyalert.indices.splice(0, n);
 

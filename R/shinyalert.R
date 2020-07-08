@@ -45,6 +45,8 @@
 #' close automatically. Use \code{0} to not close the modal automatically
 #' (default). If the modal closes automatically, no value is returned from the
 #' modal. See the 'Modal return value' section below.
+#' @param immediate Whether to close previously opened alerts and display
+#' current message immediately; default is \code{FALSE}.
 #' @param animation If \code{FALSE}, the modal's animation will be disabled.
 #' Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 #' \code{"slide-from-bottom"}, \code{"pop"} (the default animation when
@@ -195,6 +197,7 @@ shinyalert <- function(
   confirmButtonCol = "#AEDEF4",
   cancelButtonText = "Cancel",
   timer = 0,
+  immediate = FALSE,
   animation = TRUE,
   imageUrl = NULL,
   imageWidth = 100,
@@ -232,6 +235,11 @@ shinyalert <- function(
 
   session <- getSession()
 
+  if( immediate ){
+    # Close all previously opened alerts and display this one at once
+    closeAlert()
+  }
+
   # If an R callback function is provided, create an observer for it
   if (!is.null(callbackR)) {
 
@@ -258,7 +266,7 @@ shinyalert <- function(
   params[["inputId"]] <- session$ns(params[["inputId"]])
   session$sendCustomMessage(type = "shinyalert.show", message = params)
 
-  invisible(NULL)
+  invisible(params[["inputId"]])
 }
 
 
@@ -266,8 +274,8 @@ shinyalert <- function(
 #' @param n Number of popup messages to dismiss. If set to \code{NULL}, then
 #' all modals will be dismissed; default is \code{NULL}
 #' @export
-dismissalert <- function(n = NULL){
+closeAlert <- function(n = NULL){
   session <- getSession()
-  session$sendCustomMessage(type = "shinyalert.dismiss",
+  session$sendCustomMessage(type = "shinyalert.close",
                             message = list(count = n))
 }

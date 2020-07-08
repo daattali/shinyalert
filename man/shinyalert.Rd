@@ -20,6 +20,7 @@ shinyalert(
   confirmButtonCol = "#AEDEF4",
   cancelButtonText = "Cancel",
   timer = 0,
+  immediate = FALSE,
   animation = TRUE,
   imageUrl = NULL,
   imageWidth = 100,
@@ -80,6 +81,9 @@ text for the input.}
 close automatically. Use \code{0} to not close the modal automatically
 (default). If the modal closes automatically, no value is returned from the
 modal. See the 'Modal return value' section below.}
+
+\item{immediate}{Whether to close previously opened alerts and display
+current message immediately; default is \code{FALSE}.}
 
 \item{animation}{If \code{FALSE}, the modal's animation will be disabled.
 Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
