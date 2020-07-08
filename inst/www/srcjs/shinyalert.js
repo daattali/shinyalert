@@ -1,6 +1,6 @@
 var swalService = new SwalService({showPendingMessage: false});
 shinyalert = {};
-shinyalert.indices = [];  // Used to make the timer work
+shinyalert.instances = [];  // Used to make the timer work
 
 Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
 
@@ -12,9 +12,10 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   var callbackR = function(value) {};
-  if (params['cbid'] != null) {
-    var cbid = params['cbid'];
-    delete params['cbid'];
+  // Always create cbid
+  var cbid = params['cbid'];
+  delete params['cbid'];
+  if(typeof cbid === 'string'){
     callbackR = function(value) {
       Shiny.onInputChange(cbid, value);
     }
@@ -36,16 +37,21 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   delete params['timer'];
 
   var swal_id = swalService.swal(params, callback);
-  shinyalert.indices.push(swal_id);
+  shinyalert.instances.push({
+    swal_id : swal_id,
+    cbid    : cbid
+  });
 
-  if (timer != 0) {
+  // Changed timer != 0 to timer > 0
+  if (timer > 0) {
     setTimeout(function(x) {
       var ii = 0;
-      for(ii in shinyalert.indices){
-        if( shinyalert.indices[ii] === x ){
-          shinyalert.indices.splice( ii, 1 );
+      for(ii in shinyalert.instances){
+        if( shinyalert.instances[ii].swal_id === x ){
+          shinyalert.instances.splice( ii, 1 );
         }
         swalService.close( x );
+        break;
       }
     }, timer, swal_id);
   }
@@ -53,12 +59,26 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
 });
 
 Shiny.addCustomMessageHandler('shinyalert.close', function(params) {
-  var n = (params && params.count) || shinyalert.indices.length,
-      ids = shinyalert.indices.splice(0, n);
+  var n = (params && params.count) || shinyalert.instances.length,
+      cbid = params.cbid;
 
-  // dismiss n alerts
-  var i;
-  for( i = 0; i < ids.length; i++ ){
-    swalService.close(ids[i]);
+  var i, item;
+  if( typeof cbid === 'string' ){
+    // close specific alert
+    for( i = 0; i < shinyalert.instances.length; i++ ){
+      item = shinyalert.instances[i];
+      if( item.cbid === cbid ){
+        swalService.close( item.swal_id );
+        shinyalert.instances.splice( i, 1 );
+        break;
+      }
+    }
+  } else {
+    // dismiss n alerts
+    item = shinyalert.instances.splice(0, n);
+    for( i = 0; i < item.length; i++ ){
+      swalService.close( item[i].swal_id );
+    }
   }
+
 });

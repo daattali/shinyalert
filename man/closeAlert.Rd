@@ -4,11 +4,15 @@
 \alias{closeAlert}
 \title{Dismiss one or more popup messages}
 \usage{
-closeAlert(n = NULL)
+closeAlert(n = NULL, cbid = NULL)
 }
 \arguments{
 \item{n}{Number of popup messages to dismiss. If set to \code{NULL}, then
-all modals will be dismissed; default is \code{NULL}}
+all modals will be dismissed; default is \code{NULL}.}
+
+\item{cbid}{ID created by \code{\link{shinyalert}}. Usually \code{cbid} is
+used to close a specific alert. Note that if \code{cbid} is specified,
+then \code{n} will be ignored.}
 }
 \description{
 Dismiss one or more popup messages

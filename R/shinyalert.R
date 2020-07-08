@@ -62,6 +62,10 @@
 #' @param inputId The input ID that will be used to retrieve the value of this
 #' modal (defualt: \code{"shinyalert"}). You can access the value of the modal
 #' with \code{input$<inputId>}.
+#'
+#' @return A string that can be used by \code{\link{closeAlert}} to close this
+#' specific alert.
+#'
 #' @section Input modals:
 #' Usually the purpose of a modal is simply informative, to show some
 #' information to the user. However, the modal can also be used to retrieve an
@@ -261,21 +265,34 @@ shinyalert <- function(
       }
     }, once = TRUE)
     params[['callbackR']] <- NULL
+  } else {
+    # Still create `cbid` used by closeAlert to explicitly close this alert
+    paramsSerialize <- params
+    paramsSerialize[['callbackR']] <- NULL
+
+    cbid <- sprintf("shinyalert-%s-%s",
+                    digest::digest(paramsSerialize),
+                    as.integer(stats::runif(1, 0, 1e9)))
+    params[['cbid']] <- session$ns(cbid)
   }
 
   params[["inputId"]] <- session$ns(params[["inputId"]])
   session$sendCustomMessage(type = "shinyalert.show", message = params)
 
-  invisible(params[["inputId"]])
+  invisible(params[["cbid"]])
 }
 
 
 #' Dismiss one or more popup messages
 #' @param n Number of popup messages to dismiss. If set to \code{NULL}, then
-#' all modals will be dismissed; default is \code{NULL}
+#' all modals will be dismissed; default is \code{NULL}.
+#' @param cbid ID created by \code{\link{shinyalert}}. Usually \code{cbid} is
+#' used to close a specific alert. Note that if \code{cbid} is specified,
+#' then \code{n} will be ignored.
 #' @export
-closeAlert <- function(n = NULL){
+closeAlert <- function(n = NULL, cbid = NULL){
+
   session <- getSession()
   session$sendCustomMessage(type = "shinyalert.close",
-                            message = list(count = n))
+                            message = list(count = n, cbid = cbid))
 }

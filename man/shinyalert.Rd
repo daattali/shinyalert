@@ -108,6 +108,10 @@ Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 modal (defualt: \code{"shinyalert"}). You can access the value of the modal
 with \code{input$<inputId>}.}
 }
+\value{
+A string that can be used by \code{\link{closeAlert}} to close this
+specific alert.
+}
 \description{
 A modal can contain text, images, OK/Cancel buttons, an input to get a
 response from the user, and many more customizable options. The value of the
