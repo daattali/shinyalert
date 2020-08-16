@@ -34,7 +34,6 @@ useShinyalert <- function(rmd = FALSE) {
 
   shiny::addResourcePath("resources",
                          system.file("www", package = "shinyalert"))
-# add `.sweet-alert .shiny-input-container input { display: block; }` and other css that reset inputs
   # add a way to specify the width, because right now you can't put too much inside (default is 478px)
   insert_into_doc <- if (rmd) shiny::tagList else shiny::tags$head
 
@@ -43,6 +42,9 @@ useShinyalert <- function(rmd = FALSE) {
       shiny::tags$script(
         src = file.path("resources", "shared", "sweetalert-1.0.1",
                         "js", "sweetalert.min.js")
+      ),
+      shiny::tags$style(
+        ".sweet-alert .shiny-input-container input { display: block; }"
       ),
       shiny::tags$link(
         rel = "stylesheet",
