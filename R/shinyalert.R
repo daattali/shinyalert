@@ -257,6 +257,10 @@ shinyalert <- function(
 
   
   if (html && nzchar(params[["text"]])) {
+    if (type == "input") {
+      stop("Cannot use 'input' type and HTML together. You must supply your own Shiny inputs when using HTML.", call. = FALSE)
+    }
+    
     shiny::insertUI(
       "head", "beforeEnd", immediate = FALSE,
       shiny::tags$head(
