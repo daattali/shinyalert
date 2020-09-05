@@ -27,7 +27,8 @@ shinyalert(
   className = "",
   callbackR = NULL,
   callbackJS = NULL,
-  inputId = "shinyalert"
+  inputId = "shinyalert",
+  size = "s"
 )
 }
 \arguments{
@@ -103,6 +104,9 @@ Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 \item{inputId}{The input ID that will be used to retrieve the value of this
 modal (defualt: \code{"shinyalert"}). You can access the value of the modal
 with \code{input$<inputId>}.}
+
+\item{size}{The size (width) of the modal. One of `"xs"` for extra small, `"s"` 
+for small (default), `"m"` for medium, or `"l"` for large.}
 }
 \description{
 A modal can contain text, images, OK/Cancel buttons, an input to get a

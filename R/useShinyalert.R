@@ -43,9 +43,6 @@ useShinyalert <- function(rmd = FALSE) {
         src = file.path("resources", "shared", "sweetalert-1.0.1",
                         "js", "sweetalert.min.js")
       ),
-      shiny::tags$style(
-        ".sweet-alert .shiny-input-container input { display: block; }"
-      ),
       shiny::tags$link(
         rel = "stylesheet",
         href = file.path("resources", "shared", "sweetalert-1.0.1",
@@ -57,6 +54,10 @@ useShinyalert <- function(rmd = FALSE) {
       ),
       shiny::tags$script(
         src = file.path("resources", "srcjs", "shinyalert.js")
+      ),
+      shiny::tags$link(
+        rel = "stylesheet",
+        href = file.path("resources", "css", "shinyalert.css")
       )
     )
   )

@@ -1,6 +1,10 @@
-# shinyalert 1.1
+# shinyalert 2.0.0 (Date TBD)
 
-2020-04-29
+- **BREAKING CHANGE** Cannot use `html=TRUE` together with `type="input"`, you must instead supply your own Shiny inputs when using HTML
+- New feature: added support for shiny inputs/outputs inside the modal (need to use `html=TRUE`) (#26)
+- New feature: added a `size` parameter to set the size (width) of the modal to one of four pre-defined sizes (#17)
+
+# shinyalert 1.1 (2020-04-29)
 
 - New feature (#11): `inputId` parameter added, which allows you to set the input ID that is used to retrieve the return value of the modal
 - New feature (#12): support chaining modals, you can now call a shinyalert modal in the callback of another modal
@@ -10,8 +14,6 @@
 - Documentation changes
 - Improvements to demo shiny app UI
 
-# shinyalert 1.0
-
-2018-02-12
+# shinyalert 1.0 (2018-02-12)
 
 Initial release

@@ -73,6 +73,7 @@ fluidPage(
     ),
     column(
       3,
+      selectInput("size", "Size", c("xs", "s", "m", "l"), "s"),
       selectInput("type", "Type",
                   choices = c("<none>", "input", "warning", "error", "success", "info"),
                   selected = "success"),
