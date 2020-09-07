@@ -3,6 +3,7 @@
 - **BREAKING CHANGE** Cannot use `html=TRUE` together with `type="input"`, you must instead supply your own Shiny inputs when using HTML
 - New feature: added support for shiny inputs/outputs inside the modal (need to use `html=TRUE`) (#26)
 - New feature: added a `size` parameter to set the size (width) of the modal to one of four pre-defined sizes (#17)
+- Refactor of how unique IDs are created to ensure uniqueness in a performant way
 
 # shinyalert 1.1 (2020-04-29)
 
