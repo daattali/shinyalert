@@ -42,5 +42,6 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
   delete params['timer'];
 
+  Shiny.unbindAll($(".sweet-alert"));
   swalService.swal(params, callback);
 });
