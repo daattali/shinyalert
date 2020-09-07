@@ -1,9 +1,10 @@
 var swalService = new SwalService({showPendingMessage: false});
 shinyalert = {};
-shinyalert.num = 0;  // Used to make the timer work
+shinyalert.indices = [];  // Used to make the timer work
 
 Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
-  shinyalert.num++;
+
+  Shiny.unbindAll($(".sweet-alert"));
 
   var callbackJS = function(value) {};
   if (params['callbackJS'] != null) {
@@ -33,15 +34,21 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     delete params['inputId'];
   }
 
-  if (params['timer'] != 0) {
-    setTimeout(function(x) {
-      if (x == shinyalert.num) {
-        swalService.close();
-      }
-    }, params['timer'], shinyalert.num);
-  }
+  var timer = params['timer'];
   delete params['timer'];
 
-  Shiny.unbindAll($(".sweet-alert"));
-  swalService.swal(params, callback);
+  var swal_id = swalService.swal(params, callback);
+  shinyalert.indices.push(swal_id);
+
+  if (timer != 0) {
+    setTimeout(function(x) {
+      var alertidx = 0;
+      for (alertidx in shinyalert.indices) {
+        if (shinyalert.indices[alertidx] === x) {
+          shinyalert.indices.splice(alertidx, 1);
+        }
+        swalService.close(x);
+      }
+    }, timer, swal_id);
+  }
 });
