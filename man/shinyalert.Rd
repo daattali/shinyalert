@@ -105,8 +105,8 @@ Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 modal (defualt: \code{"shinyalert"}). You can access the value of the modal
 with \code{input$<inputId>}.}
 
-\item{size}{The size (width) of the modal. One of `"xs"` for extra small, `"s"`
-for small (default), `"m"` for medium, or `"l"` for large.}
+\item{size}{The size (width) of the modal. One of \code{"xs"} for extra small, \code{"s"}
+for small (default), \code{"m"} for medium, or \code{"l"} for large.}
 }
 \description{
 A modal can contain text, images, OK/Cancel buttons, an input to get a

@@ -15,18 +15,18 @@ BugReports: https://github.com/daattali/shinyalert/issues
 Depends:
     R (>= 3.0.2)
 Imports:
+    htmltools,
     shiny (>= 1.0.4),
     stats,
     uuid
 Suggests:
     colourpicker,
     knitr,
-    rmarkdown
-Remotes:
-    daattali/shinydisconnect
+    rmarkdown,
+    shinydisconnect
 License: MIT + file LICENSE
-SystemRequirements: pandoc with https support
 LazyData: true
 Encoding: UTF-8
 VignetteBuilder: knitr
 RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)
