@@ -77,7 +77,7 @@ function(input, output, session) {
       shinyalert::shinyalert(text = "Cannot use 'input' type and HTML together (because when using HTML, you're able to provide custom shiny inputs/outputs).", type = "error")
       return()
     }
-    
+
     eval(parse(text = code()))
   })
 

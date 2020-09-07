@@ -60,7 +60,7 @@
 #' @param inputId The input ID that will be used to retrieve the value of this
 #' modal (defualt: \code{"shinyalert"}). You can access the value of the modal
 #' with \code{input$<inputId>}.
-#' @param size The size (width) of the modal. One of `"xs"` for extra small, `"s"` 
+#' @param size The size (width) of the modal. One of `"xs"` for extra small, `"s"`
 #' for small (default), `"m"` for medium, or `"l"` for large.
 #' @section Input modals:
 #' Usually the purpose of a modal is simply informative, to show some
@@ -252,12 +252,12 @@ shinyalert <- function(
     params[['callbackR']] <- NULL
   }
 
-  
+
   if (html && nzchar(params[["text"]])) {
     if (type == "input") {
       stop("Cannot use 'input' type and HTML together. You must supply your own Shiny inputs when using HTML.", call. = FALSE)
     }
-    
+
     shiny::insertUI(
       "head", "beforeEnd", immediate = FALSE,
       shiny::tags$head(
@@ -269,9 +269,9 @@ shinyalert <- function(
     )
     params[["text"]] <- as.character(params[["text"]])
   }
-  
+
   params[["inputId"]] <- session$ns(params[["inputId"]])
   session$sendCustomMessage(type = "shinyalert.show", message = params)
-  
+
   invisible(NULL)
 }

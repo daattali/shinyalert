@@ -114,7 +114,7 @@ fluidPage(
   ),
   fluidRow(
     column(
-      12, 
+      12,
       strong("Modal return value (useful when Type is \"input\"):"),
       textOutput("return", inline = TRUE)
     )
