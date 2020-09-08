@@ -57,7 +57,7 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
         if (shinyalert.instances[alertidx].swal_id === x) {
           shinyalert.instances.splice(alertidx, 1);
         }
-        swalService.closeAndFireCallback(x, false);
+        swalService.close(x);
         break;
       }
     }, timer, swal_id);
@@ -74,7 +74,7 @@ Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
       var item = shinyalert.instances[idx];
       if (item.cbid === cbid) {
         shinyalert.instances.splice(idx, 1);
-        swalService.closeAndFireCallback(item.swal_id, false);
+        swalService.close(item.swal_id);
         break;
       }
     }
@@ -83,7 +83,7 @@ Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
     var num = params.count || shinyalert.instances.length;
     var items = shinyalert.instances.splice(0, num);
     for (idx = 0; idx < items.length; idx++) {
-      swalService.closeAndFireCallback(items[idx].swal_id, false);
+      swalService.close(items[idx].swal_id);
     }
   }
 });
