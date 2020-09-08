@@ -28,7 +28,8 @@ shinyalert(
   callbackR = NULL,
   callbackJS = NULL,
   inputId = "shinyalert",
-  size = "s"
+  size = "s",
+  immediate = FALSE
 )
 }
 \arguments{
@@ -107,6 +108,9 @@ with \code{input$<inputId>}.}
 
 \item{size}{The size (width) of the modal. One of \code{"xs"} for extra small, \code{"s"}
 for small (default), \code{"m"} for medium, or \code{"l"} for large.}
+
+\item{immediate}{If \code{TRUE}, close any previously opened alerts and display
+the current one immediately.}
 }
 \description{
 A modal can contain text, images, OK/Cancel buttons, an input to get a

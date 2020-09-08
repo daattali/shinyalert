@@ -62,6 +62,8 @@
 #' with \code{input$<inputId>}.
 #' @param size The size (width) of the modal. One of `"xs"` for extra small, `"s"`
 #' for small (default), `"m"` for medium, or `"l"` for large.
+#' @param immediate If `TRUE`, close any previously opened alerts and display
+#' the current one immediately.
 #' @section Input modals:
 #' Usually the purpose of a modal is simply informative, to show some
 #' information to the user. However, the modal can also be used to retrieve an
@@ -205,7 +207,8 @@ shinyalert <- function(
   callbackR = NULL,
   callbackJS = NULL,
   inputId = "shinyalert",
-  size = "s"
+  size = "s",
+  immediate = FALSE
 ) {
 
   params <- as.list(environment())
@@ -237,6 +240,10 @@ shinyalert <- function(
   params[['imageHeight']] <- NULL
 
   session <- getSession()
+
+  if (immediate) {
+    closeAlert()
+  }
 
   # If an R callback function is provided, create an observer for it
   if (!is.null(callbackR)) {
