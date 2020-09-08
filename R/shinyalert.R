@@ -275,3 +275,12 @@ shinyalert <- function(
 
   invisible(NULL)
 }
+
+#' Close a shinyalert popup message
+#' @param num Number of popup messages to close. If set to 0 (default) then all
+#' messages are closed. This is only useful if you have multiple popups queued up.
+#' @export
+closeAlert <- function(num = 0) {
+  session <- getSession()
+  session$sendCustomMessage(type = "shinyalert.closeAlert", message = list(count = num))
+}
