@@ -5,7 +5,8 @@ Authors@R: c(
     person("Dean", "Attali", email = "daattali@gmail.com",
       role = c("aut", "cre"), comment = "R interface"),
     person("Tristan", "Edwards", role = c("aut"),
-       comment = "sweetalert library")
+       comment = "sweetalert library"),
+    person("Zhengjia", "Wang", role = c("ctb"))
     )
 Description: Easily create pretty popup messages (modals) in 'Shiny'. A modal can
     contain text, images, OK/Cancel buttons, an input to get a response from the

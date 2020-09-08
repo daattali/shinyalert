@@ -54,10 +54,10 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     setTimeout(function(x) {
       var alertidx = 0;
       for (alertidx in shinyalert.instances) {
-        swalService.close(x);
         if (shinyalert.instances[alertidx].swal_id === x) {
           shinyalert.instances.splice(alertidx, 1);
         }
+        swalService.closeAndFireCallback(x, false);
         break;
       }
     }, timer, swal_id);
@@ -73,8 +73,8 @@ Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
     for (idx = 0; idx < shinyalert.instances.length; idx++ ){
       var item = shinyalert.instances[idx];
       if (item.cbid === cbid) {
-        swalService.close(item.swal_id);
         shinyalert.instances.splice(idx, 1);
+        swalService.closeAndFireCallback(item.swal_id, false);
         break;
       }
     }
@@ -83,7 +83,7 @@ Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
     var num = params.count || shinyalert.instances.length;
     var items = shinyalert.instances.splice(0, num);
     for (idx = 0; idx < items.length; idx++) {
-      swalService.close(items[idx].swal_id);
+      swalService.closeAndFireCallback(items[idx].swal_id, false);
     }
   }
 });

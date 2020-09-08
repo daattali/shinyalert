@@ -20,7 +20,7 @@ SwalService.prototype = {
     var pending = {
       args: arguments,
       id: this.nextId++
-    }
+    };
     return this._swalWithId(pending);
   },
 
@@ -86,10 +86,11 @@ SwalService.prototype = {
   },
 
   closeAndFireCallback: function(id, opts) {
+    var _currentSwal = this.currentSwal;
     this.close(id);
-    if (this.currentSwal.args && this.currentSwal.args.length > 1 && typeof this.currentSwal.args[1] == 'function') {
+    if (_currentSwal && _currentSwal.args && _currentSwal.args.length > 1 && typeof _currentSwal.args[1] == 'function') {
       // Currently, programatically closing the swal doesn't invoke the callback.
-      var callback = this.currentSwal.args[1];
+      var callback = _currentSwal.args[1];
       callback(opts);
     }
   },
