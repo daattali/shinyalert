@@ -52,3 +52,11 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     }, timer, swal_id);
   }
 });
+
+Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
+  var num = params.count || shinyalert.indices.length;
+  var ids = shinyalert.indices.splice(0, num);
+  for (var idx = 0; idx < ids.length; idx++ ){
+    swalService.close(ids[idx]);
+  }
+});
