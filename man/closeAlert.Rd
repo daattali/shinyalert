@@ -8,7 +8,7 @@ closeAlert(num = 0)
 }
 \arguments{
 \item{num}{Number of popup messages to close. If set to 0 (default) then all
-messages are closed.}
+messages are closed. This is only useful if you have multiple popups queued up.}
 }
 \description{
 Close a shinyalert popup message
