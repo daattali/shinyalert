@@ -1,6 +1,6 @@
 Package: shinyalert
 Title: Easily Create Pretty Popup Messages (Modals) in 'Shiny'
-Version: 1.1
+Version: 1.1.0.9000
 Authors@R: c(
     person("Dean", "Attali", email = "daattali@gmail.com",
       role = c("aut", "cre"), comment = "R interface"),
@@ -17,18 +17,18 @@ BugReports: https://github.com/daattali/shinyalert/issues
 Depends:
     R (>= 3.0.2)
 Imports:
-    digest,
+    htmltools,
     shiny (>= 1.0.4),
-    stats
+    stats,
+    uuid
 Suggests:
     colourpicker,
     knitr,
-    rmarkdown
-Remotes:
-    daattali/shinydisconnect
+    rmarkdown,
+    shinydisconnect
 License: MIT + file LICENSE
-Encoding: UTF-8
-SystemRequirements: pandoc with https support
 LazyData: true
+Encoding: UTF-8
 VignetteBuilder: knitr
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)

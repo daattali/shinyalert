@@ -13,8 +13,8 @@ shinyalert
 <h4 align="center">
 
 Easily create pretty popup messages (modals) in Shiny <br><br>
-<a href="https://daattali.com/shiny/shinyalert-demo/">Demo</a> ·
-Copyright 2020 <a href="https://deanattali.com">Dean Attali</a>
+<a href="https://daattali.com/shiny/shinyalert-demo/">Demo</a> · by
+<a href="https://deanattali.com">Dean Attali</a>
 
 </h4>
 
@@ -32,7 +32,7 @@ Copyright 2020 <a href="https://deanattali.com">Dean Attali</a>
 
 -----
 
-`shinyalert` lets you easily create pretty popup messages (modals) in
+{shinyalert} lets you easily create pretty popup messages (modals) in
 Shiny.
 
 Modals can contain text, images, OK/Cancel buttons, an input to get a
@@ -42,17 +42,20 @@ retrieved in Shiny using an input or using callback functions. See the
 [demo Shiny app](https://daattali.com/shiny/shinyalert-demo/) online for
 examples.
 
-**If you need any Shiny help, I’m [available for
-consulting](https://attalitech.com/). If you find shinyalert useful,
-please consider supporting my open-source development.**
+**Need Shiny help? [I’m available for
+consulting](https://attalitech.com/).**<br/> **If you find {shinyalert}
+useful, please consider [supporting my
+work](https://github.com/sponsors/daattali/sponsorships?tier_id=39852)
+to unlock rewards\! ❤**
 
 <p align="center">
+
+<a style="display: inline-block;" href="https://github.com/sponsors/daattali/sponsorships?tier_id=39852">
+<img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
 <a style="display: inline-block;" href="https://paypal.me/daattali">
 <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
 </a>
-<a style="display: inline-block; margin-left: 10px;" href="https://github.com/sponsors/daattali">
-<img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
 </p>
 
@@ -93,7 +96,7 @@ Overview
 
 </h2>
 
-`shinyalert` uses the [sweetalert](https://github.com/t4t5/sweetalert)
+{shinyalert} uses the [sweetalert](https://github.com/t4t5/sweetalert)
 JavaScript library to create simple and elegant popups (modals) in
 Shiny.
 
@@ -161,7 +164,7 @@ Modal return value
 
 </h2>
 
-Modals created with `shinyalert` have a return value when they exit.
+Modals created with {shinyalert} have a return value when they exit.
 
 When there is an input field in the modal (`type="input"`), the value of
 the modal is the value the user entered. When there is no input field in
@@ -190,7 +193,7 @@ The return value of the modal is passed as an argument to the
 arguments are provided). These are functions that get called, either in
 R or in JavaScript, when the modal exits.
 
-For example, using the following `shinyalert` code will result in a
+For example, using the following {shinyalert} code will result in a
 modal with an input field. After the user clicks “OK”, a hello message
 will be printed to both the R console and in a native JavaScript alert
 box. You don’t need to provide both callback functions, but in this
@@ -222,7 +225,7 @@ Chaining modals
 </h2>
 
 It’s possible to chain modals (call multiple modals one after another)
-by making a `shinyalert()` call inside a shinyalert callback or using
+by making a `shinyalert()` call inside a {shinyalert} callback or using
 the return value of a previous modal. For example:
 
     shinyalert(
@@ -236,7 +239,7 @@ Using in Rmarkdown files
 
 </h2>
 
-You can use `shinyalert` in Rmarkdown documents by using the `rmd =
+You can use {shinyalert} in Rmarkdown documents by using the `rmd =
 TRUE` parameter. This only works in interactive Rmd documents (when
 `runtime: shiny` is used in the YAML).
 
@@ -271,34 +274,22 @@ Doesn’t Shiny already have support for modals?
 
 Yes, it does.
 
-And Shiny’s modals are more powerful in some ways than `shinyalert`
-modals: Shiny’s native modals (`showModal()`+`modalDialog()`) can
-contain multiple input fields and even outputs.
+And Shiny’s modals are just fine.
 
-I created `shinyalert` for two reasons: first of all, I started working
+I created {shinyalert} for two reasons: first of all, I started working
 on it well before Shiny had modals. But I decided to keep working on it
-and release it even afterwards because I find `shinyalert` to be easier
+and release it even afterwards because I find {shinyalert} to be easier
 to use and to result in much nicer modals. There are also some extra
-features in `shinyalert`, such as the callback functions and the timer.
+features in {shinyalert}, such as the callback functions and the timer.
 But ultimately it’s a matter of convenience and aesthetics.
 
-<h2 id="contributions">
+<h2 id="sponsors">
 
-Contributions
+Sponsors 🏆
 
 </h2>
 
-If you have any suggestions or feedback, I would love to hear about it.
-You can either [message me directly](https://deanattali.com/contact),
-[open an issue](https://github.com/daattali/shinyalert/issues) if you
-want to request a feature/report a bug, or make a pull request if you
-can contribute.
+> There are no sponsors yet
 
-Lastly, if you find shinyalert useful, please consider [supporting
-me](https://www.paypal.me/daattali/20) for the countless hours I’ve
-spent building, documenting, and supporting various open-source packages
-:)
-
-If you’re interested in the history of this package, you can read the
-[blog post](https://deanattali.com/blog/shinyalert-package) I created
-when releasing the package.
+[Become the first sponsor for
+{shinyalert}\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)

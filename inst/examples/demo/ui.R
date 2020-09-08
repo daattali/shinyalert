@@ -74,6 +74,7 @@ fluidPage(
     ),
     column(
       3,
+      selectInput("size", "Size", c("xs", "s", "m", "l"), "s"),
       selectInput("type", "Type",
                   choices = c("<none>", "input", "warning", "error", "success", "info"),
                   selected = "success"),
@@ -113,7 +114,7 @@ fluidPage(
   ),
   fluidRow(
     column(
-      12, 
+      12,
       strong("Modal return value (useful when Type is \"input\"):"),
       textOutput("return", inline = TRUE)
     )

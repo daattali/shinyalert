@@ -28,7 +28,8 @@ shinyalert(
   className = "",
   callbackR = NULL,
   callbackJS = NULL,
-  inputId = "shinyalert"
+  inputId = "shinyalert",
+  size = "s"
 )
 }
 \arguments{
@@ -107,6 +108,9 @@ Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 \item{inputId}{The input ID that will be used to retrieve the value of this
 modal (defualt: \code{"shinyalert"}). You can access the value of the modal
 with \code{input$<inputId>}.}
+
+\item{size}{The size (width) of the modal. One of \code{"xs"} for extra small, \code{"s"}
+for small (default), \code{"m"} for medium, or \code{"l"} for large.}
 }
 \value{
 A string that can be used by \code{\link{closeAlert}} to close this

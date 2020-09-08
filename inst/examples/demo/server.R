@@ -14,6 +14,7 @@ function(input, output, session) {
       'shinyalert(\n',
       '  title = "', input$title, '",\n',
       '  text = "', input$text, '",\n',
+      '  size = "', input$size, '", \n',
       '  closeOnEsc = ', input$closeOnEsc, ',\n',
       '  closeOnClickOutside = ', input$closeOnClickOutside, ',\n',
       '  html = ', input$html, ',\n',
@@ -72,6 +73,11 @@ function(input, output, session) {
   })
 
   observeEvent(input$show, {
+    if (input$html && input$type == "input") {
+      shinyalert::shinyalert(text = "Cannot use 'input' type and HTML together (because when using HTML, you're able to provide custom shiny inputs/outputs).", type = "error")
+      return()
+    }
+
     eval(parse(text = code()))
   })
 

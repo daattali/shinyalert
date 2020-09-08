@@ -62,10 +62,8 @@
 #' @param inputId The input ID that will be used to retrieve the value of this
 #' modal (defualt: \code{"shinyalert"}). You can access the value of the modal
 #' with \code{input$<inputId>}.
-#'
-#' @return A string that can be used by \code{\link{closeAlert}} to close this
-#' specific alert.
-#'
+#' @param size The size (width) of the modal. One of `"xs"` for extra small, `"s"`
+#' for small (default), `"m"` for medium, or `"l"` for large.
 #' @section Input modals:
 #' Usually the purpose of a modal is simply informative, to show some
 #' information to the user. However, the modal can also be used to retrieve an
@@ -209,7 +207,8 @@ shinyalert <- function(
   className = "",
   callbackR = NULL,
   callbackJS = NULL,
-  inputId = "shinyalert"
+  inputId = "shinyalert",
+  size = "s"
 ) {
 
   params <- as.list(environment())
@@ -220,12 +219,15 @@ shinyalert <- function(
   if (!type %in% c("", "warning", "error", "success", "info", "input")) {
     stop("type=", type, " is not supported.", call. = FALSE)
   }
+  if (!size %in% c("xs", "s", "m", "l")) {
+    stop("size=", size, " is not supported.", call. = FALSE)
+  }
   if (!is.null(imageUrl) && imageUrl == "") {
     imageUrl <- NULL
   }
 
   # Rename some parameters that shinyalert tries to use more sensible names for
-  params[['customClass']] <- params[['className']]
+  params[['customClass']] <- paste0(params[['className']], " alert-size-", size)
   params[['allowEscapeKey']] <- params[['closeOnEsc']]
   params[['allowOutsideClick']] <- params[['closeOnClickOutside']]
   params[['confirmButtonColor']] <- params[['confirmButtonCol']]
@@ -246,16 +248,7 @@ shinyalert <- function(
 
   # If an R callback function is provided, create an observer for it
   if (!is.null(callbackR)) {
-
-    # Don't serialize the R callback because if it's a function, its entire
-    # enclosing environment will be captured and it can potentially be huge
-    # and slow
-    paramsSerialize <- params
-    paramsSerialize[['callbackR']] <- NULL
-
-    cbid <- sprintf("shinyalert-%s-%s",
-                    digest::digest(paramsSerialize),
-                    as.integer(stats::runif(1, 0, 1e9)))
+    cbid <- paste0("__shinyalert-", gsub("-", "", uuid::UUIDgenerate()))
     params[['cbid']] <- session$ns(cbid)
     shiny::observeEvent(session$input[[cbid]], {
       if (length(formals(callbackR)) == 0) {
@@ -274,6 +267,24 @@ shinyalert <- function(
                     digest::digest(paramsSerialize),
                     as.integer(stats::runif(1, 0, 1e9)))
     params[['cbid']] <- session$ns(cbid)
+  }
+
+
+  if (html && nzchar(params[["text"]])) {
+    if (type == "input") {
+      stop("Cannot use 'input' type and HTML together. You must supply your own Shiny inputs when using HTML.", call. = FALSE)
+    }
+
+    shiny::insertUI(
+      "head", "beforeEnd", immediate = FALSE,
+      shiny::tags$head(
+        htmltools::attachDependencies(
+          "",
+          htmltools::findDependencies(params[["text"]])
+        )
+      )
+    )
+    params[["text"]] <- as.character(params[["text"]])
   }
 
   params[["inputId"]] <- session$ns(params[["inputId"]])

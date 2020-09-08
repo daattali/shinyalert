@@ -67,6 +67,8 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     }, timer, swal_id);
   }
 
+  Shiny.unbindAll($(".sweet-alert"));
+  swalService.swal(params, callback);
 });
 
 Shiny.addCustomMessageHandler('shinyalert.close', function(params) {
