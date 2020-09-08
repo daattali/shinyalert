@@ -1,6 +1,6 @@
 var swalService = new SwalService({showPendingMessage: false});
 shinyalert = {};
-shinyalert.indices = [];  // Used to make the timer work
+shinyalert.instances = [];
 
 Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
 
@@ -14,15 +14,22 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   var callbackR = function(value) {};
-  if (params['cbid'] != null) {
-    var cbid = params['cbid'];
-    delete params['cbid'];
+  var cbid = params['cbid'];
+  delete params['cbid'];
+  if (params['callbackR']) {
     callbackR = function(value) {
       Shiny.onInputChange(cbid, value);
     }
   }
 
   var callback = function(value) {
+    for (var idx in shinyalert.instances) {
+      if (shinyalert.instances[idx].cbid === cbid) {
+        shinyalert.instances.splice(idx, 1);
+      }
+      break;
+    }
+
     if ('compareVersion' in Shiny &&
         Shiny.compareVersion(Shiny.version, ">=", "1.1.0") ) {
       Shiny.setInputValue(params['inputId'], value, {priority: "event"});
@@ -38,25 +45,45 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   delete params['timer'];
 
   var swal_id = swalService.swal(params, callback);
-  shinyalert.indices.push(swal_id);
+  shinyalert.instances.push({
+    swal_id : swal_id,
+    cbid    : cbid
+  });
 
-  if (timer != 0) {
+  if (timer > 0) {
     setTimeout(function(x) {
       var alertidx = 0;
-      for (alertidx in shinyalert.indices) {
-        if (shinyalert.indices[alertidx] === x) {
-          shinyalert.indices.splice(alertidx, 1);
-        }
+      for (alertidx in shinyalert.instances) {
         swalService.close(x);
+        if (shinyalert.instances[alertidx].swal_id === x) {
+          shinyalert.instances.splice(alertidx, 1);
+        }
+        break;
       }
     }, timer, swal_id);
   }
 });
 
 Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
-  var num = params.count || shinyalert.indices.length;
-  var ids = shinyalert.indices.splice(0, num);
-  for (var idx = 0; idx < ids.length; idx++ ){
-    swalService.close(ids[idx]);
+  var cbid = params.cbid;
+  var idx;
+
+  if (typeof cbid === 'string') {
+    // close a specific alert
+    for (idx = 0; idx < shinyalert.instances.length; idx++ ){
+      var item = shinyalert.instances[idx];
+      if (item.cbid === cbid) {
+        swalService.close(item.swal_id);
+        shinyalert.instances.splice(idx, 1);
+        break;
+      }
+    }
+  } else {
+    // close n alerts
+    var num = params.count || shinyalert.instances.length;
+    var items = shinyalert.instances.splice(0, num);
+    for (idx = 0; idx < items.length; idx++) {
+      swalService.close(items[idx].swal_id);
+    }
   }
 });

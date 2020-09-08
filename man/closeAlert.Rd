@@ -4,11 +4,14 @@
 \alias{closeAlert}
 \title{Close a shinyalert popup message}
 \usage{
-closeAlert(num = 0)
+closeAlert(num = 0, id = NULL)
 }
 \arguments{
 \item{num}{Number of popup messages to close. If set to 0 (default) then all
 messages are closed. This is only useful if you have multiple popups queued up.}
+
+\item{id}{To close a specific popup, use the ID returned by \code{\link{shinyalert}}.
+Note that if \code{id} is specified, then \code{num} is ignored.}
 }
 \description{
 Close a shinyalert popup message

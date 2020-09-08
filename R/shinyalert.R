@@ -64,6 +64,10 @@
 #' for small (default), `"m"` for medium, or `"l"` for large.
 #' @param immediate If `TRUE`, close any previously opened alerts and display
 #' the current one immediately.
+#'
+#' @return An ID that can be used by \code{\link{closeAlert}} to close this
+#' specific alert.
+#'
 #' @section Input modals:
 #' Usually the purpose of a modal is simply informative, to show some
 #' information to the user. However, the modal can also be used to retrieve an
@@ -246,9 +250,11 @@ shinyalert <- function(
   }
 
   # If an R callback function is provided, create an observer for it
-  if (!is.null(callbackR)) {
-    cbid <- paste0("__shinyalert-", gsub("-", "", uuid::UUIDgenerate()))
-    params[['cbid']] <- session$ns(cbid)
+  cbid <- paste0("__shinyalert-", gsub("-", "", uuid::UUIDgenerate()))
+  params[['cbid']] <- session$ns(cbid)
+  if (is.null(callbackR)) {
+    params[['callbackR']] <- FALSE
+  } else {
     shiny::observeEvent(session$input[[cbid]], {
       if (length(formals(callbackR)) == 0) {
         callbackR()
@@ -256,7 +262,7 @@ shinyalert <- function(
         callbackR(session$input[[cbid]])
       }
     }, once = TRUE)
-    params[['callbackR']] <- NULL
+    params[['callbackR']] <- TRUE
   }
 
 
@@ -280,14 +286,17 @@ shinyalert <- function(
   params[["inputId"]] <- session$ns(params[["inputId"]])
   session$sendCustomMessage(type = "shinyalert.show", message = params)
 
-  invisible(NULL)
+  invisible(params[["cbid"]])
 }
 
 #' Close a shinyalert popup message
 #' @param num Number of popup messages to close. If set to 0 (default) then all
 #' messages are closed. This is only useful if you have multiple popups queued up.
+#' @param id To close a specific popup, use the ID returned by \code{\link{shinyalert}}.
+#' Note that if `id` is specified, then `num` is ignored.
 #' @export
-closeAlert <- function(num = 0) {
+closeAlert <- function(num = 0, id = NULL) {
   session <- getSession()
-  session$sendCustomMessage(type = "shinyalert.closeAlert", message = list(count = num))
+  session$sendCustomMessage(type = "shinyalert.closeAlert",
+                            message = list(count = num, cbid = id))
 }
