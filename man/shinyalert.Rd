@@ -112,6 +112,10 @@ for small (default), \code{"m"} for medium, or \code{"l"} for large.}
 \item{immediate}{If \code{TRUE}, close any previously opened alerts and display
 the current one immediately.}
 }
+\value{
+An ID that can be used by \code{\link{closeAlert}} to close this
+specific alert.
+}
 \description{
 A modal can contain text, images, OK/Cancel buttons, an input to get a
 response from the user, and many more customizable options. The value of the
