@@ -30,15 +30,17 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
       break;
     }
 
-    if ('compareVersion' in Shiny &&
-        Shiny.compareVersion(Shiny.version, ">=", "1.1.0") ) {
-      Shiny.setInputValue(params['inputId'], value, {priority: "event"});
-    } else {
-      Shiny.onInputChange(params['inputId'], value);
+    // Avoid duplicated callback calls
+    if (typeof params['inputId'] === 'string') {
+      if ('compareVersion' in Shiny && Shiny.compareVersion(Shiny.version, ">=", "1.1.0") ) {
+        Shiny.setInputValue(params['inputId'], value, {priority: "event"});
+      } else {
+        Shiny.onInputChange(params['inputId'], value);
+      }
+      callbackJS(value);
+      callbackR(value);
+      delete params['inputId'];
     }
-    callbackJS(value);
-    callbackR(value);
-    delete params['inputId'];
   }
 
   var timer = params['timer'];
@@ -57,7 +59,7 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
         if (shinyalert.instances[alertidx].swal_id === x) {
           shinyalert.instances.splice(alertidx, 1);
         }
-        swalService.close(x);
+        swalService.closeAndFireCallback(x, false);
         break;
       }
     }, timer, swal_id);
@@ -74,7 +76,7 @@ Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
       var item = shinyalert.instances[idx];
       if (item.cbid === cbid) {
         shinyalert.instances.splice(idx, 1);
-        swalService.close(item.swal_id);
+        swalService.closeAndFireCallback(item.swal_id, false);
         break;
       }
     }
@@ -83,7 +85,7 @@ Shiny.addCustomMessageHandler('shinyalert.closeAlert', function(params) {
     var num = params.count || shinyalert.instances.length;
     var items = shinyalert.instances.splice(0, num);
     for (idx = 0; idx < items.length; idx++) {
-      swalService.close(items[idx].swal_id);
+      swalService.closeAndFireCallback(items[idx].swal_id, false);
     }
   }
 });

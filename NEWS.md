@@ -6,7 +6,8 @@
 - New feature: added `immediate` parameter to immediately show the current alert and close all previous alerts
 - New feature: added `closeAlert()` function that allows you to close any specific alert (#29)
 - `shinyalert()` now returns a unique ID
-- Fixed bugs with `timer` parameter where chained modals did not always work properly with timers (#31)
+- Fixed bug where `callbackR` was not respected when the alert had a timer (#38)
+- Fixed bug where an alert with a timer caused future alerts to not run (#39)
 - Refactor of how unique IDs are created to ensure uniqueness in a performant way
 
 # shinyalert 1.1 (2020-04-29)
