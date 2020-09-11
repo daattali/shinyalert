@@ -1,4 +1,4 @@
-# shinyalert 2.0.0 (Date TBD)
+# shinyalert 2.0.0 (2020-09-11)
 
 - **BREAKING CHANGE** Cannot use `html=TRUE` together with `type="input"`, you must instead supply your own Shiny inputs when using HTML
 - **BREAKING CHANGE** When a modal closes automatically due to a timer, it returns `FALSE` (previously nothing was returned)
