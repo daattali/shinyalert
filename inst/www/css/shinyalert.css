@@ -2,6 +2,10 @@
   display: block;
 }
 
+.sweet-alert .shiny-input-container:not(.shiny-input-container-inline) {
+  width: 100%;
+}
+
 .sweet-alert.alert-size-xs,
 .sweet-alert.alert-size-s,
 .sweet-alert.alert-size-m,
