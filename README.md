@@ -44,12 +44,11 @@ app](https://daattali.com/shiny/shinyalert-demo/) online for examples.
 **Need Shiny help? [I’m available for
 consulting](https://attalitech.com/).**<br/> **If you find {shinyalert}
 useful, please consider [supporting my
-work](https://github.com/sponsors/daattali/sponsorships) to unlock
-rewards\! ❤**
+work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
 
 <p align="center">
 
-<a style="display: inline-block;" href="https://github.com/sponsors/daattali/sponsorships">
+<a style="display: inline-block;" href="https://github.com/sponsors/daattali">
 <img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
 <a style="display: inline-block;" href="https://paypal.me/daattali">

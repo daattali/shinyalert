@@ -45,11 +45,11 @@ by <a href="https://deanattali.com">Dean Attali</a>
 Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outputs (such as plots and tables). A modal can also have a timer to close automatically, and you can specify custom code to run when a modal closes. See the [demo Shiny app](https://daattali.com/shiny/shinyalert-demo/) online for examples.
 
 **Need Shiny help? [I'm available for consulting](https://attalitech.com/).**<br/>
-**If you find {shinyalert} useful, please consider [supporting my work](https://github.com/sponsors/daattali/sponsorships) to unlock rewards\! ❤**
+**If you find {shinyalert} useful, please consider [supporting my work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
 
 <p align="center">
 
-<a style="display: inline-block;" href="https://github.com/sponsors/daattali/sponsorships">
+<a style="display: inline-block;" href="https://github.com/sponsors/daattali">
 <img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
 <a style="display: inline-block;" href="https://paypal.me/daattali">

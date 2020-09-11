@@ -125,53 +125,62 @@ online for examples or read the
 \code{shinyalert} must be initialized with a call to
 \code{\link[shinyalert]{useShinyalert}} in the app's UI.
 }
-\section{Input modals}{
+\section{Simple input modals}{
 
-Usually the purpose of a modal is simply informative, to show some
-information to the user. However, the modal can also be used to retrieve an
-input from the user by setting the \code{type = "input"} parameter.
+Usually the purpose of a modal is simply informative, to show some information
+to the user. However, the modal can also be used to retrieve an input from the
+user by setting the \code{type = "input"} parameter.
 
-Only a single input can be used inside a modal. By default, the input will be
-a text input, but you can use other HTML input types by specifying the
-\code{inputType} parameter. For example, \code{inputType = "number"} will
-provide the user with a numeric input in the modal.
+When using a \code{type="input"} modal, only a single input can be used. By default,
+the input will be a text input, but you can use other input types by specifying
+the \code{inputType} parameter (for example \code{inputType = "number"} will expose a
+numeric input).
+}
 
-See the 'Modal return value' and 'Callbacks' sections below for information
-on how to access the value entered by the user.
+\section{Shiny inputs/outputs in modals}{
+
+While simple input modals are useful for retrieving input from the user, they
+aren't very flexible - they only allow one input. You can include any Shiny UI
+code in a modal, including Shiny inputs and outputs (such as plots), by
+providing Shiny tags in the \code{text} parameter and setting \code{html=TRUE}. For
+example, the following code would produce a modal with two inputs:
+
+\preformatted{
+  shinyalert(html = TRUE, text = tagList(
+    textInput("name", "What's your name?", "Dean"),
+    numericInput("age", "How old are you?", 30),
+  ))
+}
 }
 
 \section{Modal return value}{
 
-Modals created with \code{shinyalert} have a return value when they exit.
+Modals created with {shinyalert} have a return value when they exit.
 
-When there is an input field in the modal (\code{type="input"}), the value of
-the modal is the value the user entered. When there is no input field in the
-modal, the value of the modal is \code{TRUE} if the user clicked the "OK"
-button, and \code{FALSE} if the user clicked the "Cancel" button.
+When using a simple input modal (\code{type="input"}), the value of the modal is
+the value the user entered. Otherwise, the value of the modal is \code{TRUE} if
+the user clicked the "OK" button, and \code{FALSE} if the user dismissed the modal
+(either by clicking the "Cancel" button, using the Escape key, clicking outside
+the modal, or letting the \code{timer} run out).
 
-When the user exits the modal using the Escape key or by clicking outside of
-the modal, the return value is \code{FALSE} (as if the "Cancel" button was
-clicked). If the \code{timer} parameter is used and the modal closes
-automatically as a result of the timer, no value is returned from the modal.
-
-The return value of the modal can be accessed via \code{input$shinyalert}
-(or using a different input ID if you specify the \code{inputId} parameter)
-in the Shiny server's code, as if it were a regular Shiny input. The return
-value can also be accessed using the modal callbacks (see below).
+The return value of the modal can be accessed via \code{input$shinyalert} (or using
+a different input ID if you specify the \code{inputId} parameter), as if it were a
+regular Shiny input. The return value can also be accessed using the
+\emph{modal callbacks} (see below).
 }
 
 \section{Callbacks}{
 
 The return value of the modal is passed as an argument to the \code{callbackR}
-and \code{callbackJS} functions (if a \code{callbackR} or \code{callbackJS}
-arguments are provided). These are functions that get called, either in R or
-in JavaScript, when the modal exits.
+and \code{callbackJS} functions (if a \code{callbackR} or \code{callbackJS} arguments
+are provided). These functions get called (in R and in JavaScript, respectively)
+when the modal exits.
 
-For example, using the following \code{shinyalert} code will result in a
-modal with an input field. After the user clicks "OK", a hello message will
-be printed to both the R console and in a native JavaScript alert box. You
-don't need to provide both callback functions, but in this example both are
-used for demonstration.
+For example, using the following {shinyalert} code will result in a modal with
+an input field. After the user clicks "OK", a hello message will be printed
+to both the R console and in a native JavaScript alert box. You don't need to
+provide both callback functions, but in this example both are used for
+demonstration.
 
 \preformatted{
   shinyalert(
@@ -184,7 +193,7 @@ Notice that the \code{callbackR} function accepts R code, while the
 \code{callbackJS} function uses JavaScript code.
 
 Since closing the modal with the Escape key results in a return value of
-\code{FALSE}, the callback functions can be modified to not print hello in
+\code{FALSE}, the callback functions can be modified to not print anything in
 that case.
 
 \preformatted{
@@ -231,7 +240,7 @@ if (interactive()) {
   )
 }
 
-# Example 2: Input modal calling another modal in its callback
+# Example 2: Simple input modal calling another modal in its callback
 if (interactive()) {
   library(shiny)
   library(shinyalert)
@@ -248,6 +257,33 @@ if (interactive()) {
           callbackR = function(value) { shinyalert(paste("Welcome", value)) }
         )
       })
+    }
+  )
+}
+
+# Example 3: Modal with Shiny tags (input and output)
+if (interactive()) {
+  library(shiny)
+  library(shinyalert)
+
+  shinyApp(
+    ui = fluidPage(
+      useShinyalert(),  # Set up shinyalert
+      actionButton("btn", "Go")
+    ),
+    server = function(input, output) {
+      observeEvent(input$btn, {
+        shinyalert(
+          html = TRUE,
+          text = tagList(
+            numericInput("num", "Number", 10),
+            "The square of the number is",
+            textOutput("square", inline = TRUE)
+          )
+        )
+      })
+
+      output$square <- renderText({ input$num*input$num })
     }
   )
 }
