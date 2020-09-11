@@ -35,22 +35,21 @@ Easily create pretty popup messages (modals) in Shiny <br><br>
 {shinyalert} lets you easily create pretty popup messages (modals) in
 Shiny.
 
-Modals can contain text, images, OK/Cancel buttons, an input to get a
-response from the user, and many more customizable options. A modal can
-also have a timer to close automatically. The value of the modal can be
-retrieved in Shiny using an input or using callback functions. See the
-[demo Shiny app](https://daattali.com/shiny/shinyalert-demo/) online for
-examples.
+Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and
+Shiny outputs (such as plots and tables). A modal can also have a timer
+to close automatically, and you can specify custom code to run when a
+modal closes. See the [demo Shiny
+app](https://daattali.com/shiny/shinyalert-demo/) online for examples.
 
 **Need Shiny help? [I’m available for
 consulting](https://attalitech.com/).**<br/> **If you find {shinyalert}
 useful, please consider [supporting my
-work](https://github.com/sponsors/daattali/sponsorships?tier_id=39852)
-to unlock rewards\! ❤**
+work](https://github.com/sponsors/daattali/sponsorships) to unlock
+rewards\! ❤**
 
 <p align="center">
 
-<a style="display: inline-block;" href="https://github.com/sponsors/daattali/sponsorships?tier_id=39852">
+<a style="display: inline-block;" href="https://github.com/sponsors/daattali/sponsorships">
 <img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
 
 <a style="display: inline-block;" href="https://paypal.me/daattali">
@@ -64,13 +63,14 @@ to unlock rewards\! ❤**
   - [Examples](#examples)
   - [Overview](#overview)
   - [Installation](#install)
-  - [Input modals](#input-modals)
+  - [Simple input modals](#input-modals)
+  - [Shiny inputs/outputs in modals](#shiny-tags)
   - [Modal return value](#return-value)
   - [Callbacks](#callbacks)
   - [Chaining modals](#chaining)
   - [Using in Rmarkdown files](#rmd)
   - [Comparison with Shiny modals](#shiny-comparison)
-  - [Contributions](#contributions)
+  - [Sponsors](#sponsors)
 
 <h2 id="examples">
 
@@ -82,11 +82,15 @@ Example 1: [Simple modal](#overview)
 
 ![basic modal](inst/img/shinyalert-basic.gif)
 
-Example 2: [Input modal](#input-modals)
+Example 2: [Simple input modals](#input-modals)
 
 ![input modal](inst/img/shinyalert-input.gif)
 
-Example 3: [Chaining modals](#chaining)
+Example 3: [Shiny inputs/outputs in modals](#shiny-tags)
+
+![Shiny inputs](inst/img/shinyalert-plot.gif)
+
+Example 4: [Chaining modals](#chaining)
 
 ![chaining modals](inst/img/shinyalert-chain.gif)
 
@@ -105,7 +109,7 @@ and text, and a modal will show up. In order to be able to call
 `shinyalert()` in a Shiny app, you must first call `useShinyalert()`
 anywhere in the app’s UI.
 
-Here is some minimal Shiny app code that creates a modal:
+Here is a minimal Shiny app code that creates a modal:
 
     library(shiny)
     library(shinyalert)
@@ -141,7 +145,7 @@ To install the latest development version from GitHub:
 
 <h2 id="input-modals">
 
-Input modals
+Simple input modals
 
 </h2>
 
@@ -149,14 +153,28 @@ Usually the purpose of a modal is simply informative, to show some
 information to the user. However, the modal can also be used to retrieve
 an input from the user by setting the `type = "input"` parameter.
 
-Only a single input can be used inside a modal. By default, the input
-will be a text input, but you can use other HTML input types by
-specifying the `inputType` parameter. For example, `inputType =
-"number"` will provide the user with a numeric input in the modal.
+When using a `type="input"` modal, only a single input can be used. By
+default, the input will be a text input, but you can use other input
+types by specifying the `inputType` parameter (for example `inputType =
+"number"` will expose a numeric input).
 
-See the *[Modal return value](#return-value)* and
-*[Callbacks](#callbacks)* sections below for information on how to
-access the value entered by the user.
+<h2 id="shiny-tags">
+
+Shiny inputs/outputs in modals
+
+</h2>
+
+While simple input modals are useful for retrieving input from the user,
+they aren’t very flexible - they only allow one input. You can include
+any Shiny UI code in a modal, including Shiny inputs and outputs (such
+as plots), by providing Shiny tags in the `text` parameter and setting
+`html=TRUE`. For example, the following code would produce a modal with
+two inputs:
+
+    shinyalert(html = TRUE, text = tagList(
+      textInput("name", "What's your name?", "Dean"),
+      numericInput("age", "How old are you?", 30),
+    ))
 
 <h2 id="return-value">
 
@@ -166,21 +184,16 @@ Modal return value
 
 Modals created with {shinyalert} have a return value when they exit.
 
-When there is an input field in the modal (`type="input"`), the value of
-the modal is the value the user entered. When there is no input field in
-the modal, the value of the modal is `TRUE` if the user clicked the “OK”
-button, and `FALSE` if the user clicked the “Cancel” button.
-
-When the user exits the modal using the Escape key or by clicking
-outside of the modal, the return value is `FALSE` (as if the “Cancel”
-button was clicked). If the `timer` parameter is used and the modal
-closes automatically as a result of the timer, no value is returned from
-the modal.
+When using a simple input modal (`type="input"`), the value of the modal
+is the value the user entered. Otherwise, the value of the modal is
+`TRUE` if the user clicked the “OK” button, and `FALSE` if the user
+dismissed the modal (either by clicking the “Cancel” button, using the
+Escape key, clicking outside the modal, or letting the `timer` run out).
 
 The return value of the modal can be accessed via `input$shinyalert` (or
-using a different input ID if you specify the `inputId` parameter) in
-the Shiny server’s code, as if it were a regular Shiny input. The return
-value can also be accessed using the *[modal callbacks](#callbacks)*.
+using a different input ID if you specify the `inputId` parameter), as
+if it were a regular Shiny input. The return value can also be accessed
+using the *[modal callbacks](#callbacks)*.
 
 <h2 id="callbacks">
 
@@ -190,8 +203,8 @@ Callbacks
 
 The return value of the modal is passed as an argument to the
 `callbackR` and `callbackJS` functions (if a `callbackR` or `callbackJS`
-arguments are provided). These are functions that get called, either in
-R or in JavaScript, when the modal exits.
+arguments are provided). These functions get called (in R and in
+JavaScript, respectively) when the modal exits.
 
 For example, using the following {shinyalert} code will result in a
 modal with an input field. After the user clicks “OK”, a hello message
@@ -209,7 +222,7 @@ Notice that the `callbackR` function accepts R code, while the
 `callbackJS` function uses JavaScript code.
 
 Since closing the modal with the Escape key results in a return value of
-`FALSE`, the callback functions can be modified to not print hello in
+`FALSE`, the callback functions can be modified to not print anything in
 that case.
 
     shinyalert(

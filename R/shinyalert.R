@@ -1,9 +1,8 @@
 #' Display a popup message (modal) in Shiny
 #'
-#' A modal can contain text, images, OK/Cancel buttons, an input to get a
-#' response from the user, and many more customizable options. The value of the
-#' modal can be retrieved in Shiny using \code{input$shinyalert} or using the
-#' two callback parameters. See the
+#' Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outputs
+#' (such as plots and tables). A modal can also have a timer to close automatically,
+#' and you can specify custom code to run when a modal closes. See the
 #' \href{https://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
 #' online for examples or read the
 #' \href{https://github.com/daattali/shinyalert#readme}{full README}.\cr\cr
@@ -11,7 +10,8 @@
 #' \code{\link[shinyalert]{useShinyalert}} in the app's UI.
 #'
 #' @param title The title of the modal.
-#' @param text The modal's text.
+#' @param text The modal's text. Can either be simple text, or Shiny tags (including
+#' Shiny inputs and outputs). If using Shiny tags, then you must also set `html=TRUE`.
 #' @param type The type of the modal. There are 4 built-in types which will show
 #' a corresponding icon: \code{"warning"}, \code{"error"}, \code{"success"} and
 #' \code{"info"}. You can also set \code{type="input"} to get a prompt
@@ -42,9 +42,7 @@
 #' (must be a HEX value).
 #' @param cancelButtonText The text in the "Cancel" button.
 #' @param timer The amount of time (in milliseconds) before the modal should
-#' close automatically. Use \code{0} to not close the modal automatically
-#' (default). If the modal closes automatically, no value is returned from the
-#' modal. See the 'Modal return value' section below.
+#' close automatically. Use \code{0} to not close the modal automatically (default).
 #' @param animation If \code{FALSE}, the modal's animation will be disabled.
 #' Possible values: \code{FALSE}, \code{TRUE}, \code{"slide-from-top"},
 #' \code{"slide-from-bottom"}, \code{"pop"} (the default animation when
