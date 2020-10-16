@@ -213,8 +213,8 @@ example both are used for demonstration.
 
     shinyalert(
       "Enter your name", type = "input",
-      callbackR = function(x) { message("Hello ", x) },
-      callbackJS = "function(x) { alert('Hello ' + x); }"
+      callbackR = function(input) { message("Hello ", input) },
+      callbackJS = "function(input) { alert('Hello ' + input); }"
     )
 
 Notice that the `callbackR` function accepts R code, while the
@@ -226,8 +226,8 @@ that case.
 
     shinyalert(
       "Enter your name", type = "input",
-      callbackR = function(x) { if(x != FALSE) message("Hello ", x) },
-      callbackJS = "function(x) { if (x !== false) { alert('Hello ' + x); } }"
+      callbackR = function(input) { if(input != FALSE) message("Hello ", input) },
+      callbackJS = "function(input) { if (input !== false) { alert('Hello ' + input); } }"
     )
 
 <h2 id="chaining">
