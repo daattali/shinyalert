@@ -226,8 +226,8 @@ that case.
 
     shinyalert(
       "Enter your name", type = "input",
-      callbackR = function(response) { if(input != FALSE) message("Hello ", response) },
-      callbackJS = "function(response) { if (input !== false) { alert('Hello ' + response); } }"
+      callbackR = function(response) { if(response != FALSE) message("Hello ", response) },
+      callbackJS = "function(response) { if (response !== false) { alert('Hello ' + response); } }"
     )
 
 <h2 id="chaining">
@@ -242,7 +242,7 @@ the return value of a previous modal. For example:
 
     shinyalert(
       title = "What is your name?", type = "input",
-      callbackR = function(value) { shinyalert(paste("Welcome", value)) }
+      callbackR = function(response) { shinyalert(paste("Welcome", response)) }
     )
 
 <h2 id="rmd">
