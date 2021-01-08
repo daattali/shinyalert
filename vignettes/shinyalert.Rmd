@@ -1,12 +1,5 @@
 ---
 title: "Package shinyalert"
-author: "Dean Attali"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Package shinyalert}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\usepackage[utf8]{inputenc}
 ---
 
 ```{r setup, echo = FALSE, message = FALSE}
@@ -14,9 +7,6 @@ knitr::opts_chunk$set(tidy = FALSE, comment = "#>")
 ```
 
 <p align="center">
-<a href="https://github.com/daattali/shinyalert/">
-<img src="../inst/img/shinyalert-logo-whitebg.png" alt="shinyalert" width=470 height=100 />
-</a>
 
 <h3 align="center">shinyalert</h3>
 
@@ -39,6 +29,8 @@ by <a href="https://deanattali.com">Dean Attali</a>
 </p>
 
 ---
+
+<img src="../inst/img/hex.png" width="170" align="right"/>
 
 {shinyalert} lets you easily create pretty popup messages (modals) in Shiny.
 
@@ -237,3 +229,7 @@ I created {shinyalert} for two reasons: first of all, I started working on it we
 > There are no sponsors yet
 
 [Become the first sponsor for {shinyalert}!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
+
+<h2>Credits</h2>
+
+Logo design by [Alfredo Hernández](https://aldomann.com/).

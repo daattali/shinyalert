@@ -1,9 +1,5 @@
 <p align="center">
 
-<a href="https://github.com/daattali/shinyalert/">
-<img src="inst/img/shinyalert-logo-whitebg.png" alt="shinyalert" width=470 height=100 />
-</a>
-
 <h3 align="center">
 
 shinyalert
@@ -31,6 +27,8 @@ Easily create pretty popup messages (modals) in Shiny <br><br>
 </p>
 
 -----
+
+<img src="inst/img/hex.png" width="170" align="right"/>
 
 {shinyalert} lets you easily create pretty popup messages (modals) in
 Shiny.
@@ -305,3 +303,11 @@ Sponsors 🏆
 
 [Become the first sponsor for
 {shinyalert}\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
+
+<h2>
+
+Credits
+
+</h2>
+
+Logo design by [Alfredo Hernández](https://aldomann.com/).
