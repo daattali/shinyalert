@@ -1,3 +1,11 @@
+/* Ensure the modal has a vertical scrollbar if it's too tall */
+.sweet-alert{
+  max-height: calc(100% - 20px);
+  overflow-y: auto;
+}
+
+/* Try to make inputs look more similar to shiny inputs than sweetalert inputs */
+
 .sweet-alert .shiny-input-container input {
   display: block;
 }
@@ -5,6 +13,8 @@
 .sweet-alert .shiny-input-container:not(.shiny-input-container-inline) {
   width: 100%;
 }
+
+/* Sizing options */
 
 .sweet-alert.alert-size-xs,
 .sweet-alert.alert-size-s,

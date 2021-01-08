@@ -1,3 +1,7 @@
+# Unreleased version
+
+- Fixed bug where tall modals did not have a scrollbar and you couldn't see the entire content (#44)
+
 # shinyalert 2.0.0 (2020-09-11)
 
 - **BREAKING CHANGE** Cannot use `html=TRUE` together with `type="input"`, you must instead supply your own Shiny inputs when using HTML
