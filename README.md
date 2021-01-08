@@ -58,6 +58,7 @@ work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
 # Table of contents
 
   - [Examples](#examples)
+  - [Sponsors 🏆](#sponsors)
   - [Overview](#overview)
   - [Installation](#install)
   - [Simple input modals](#input-modals)
@@ -67,7 +68,6 @@ work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
   - [Chaining modals](#chaining)
   - [Using in Rmarkdown files](#rmd)
   - [Comparison with Shiny modals](#shiny-comparison)
-  - [Sponsors](#sponsors)
 
 <h2 id="examples">
 
@@ -90,6 +90,17 @@ Example 3: [Shiny inputs/outputs in modals](#shiny-tags)
 Example 4: [Chaining modals](#chaining)
 
 ![chaining modals](inst/img/shinyalert-chain.gif)
+
+<h2 id="sponsors">
+
+Sponsors 🏆
+
+</h2>
+
+> There are no sponsors yet
+
+[Become the first sponsor for
+{shinyalert}\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
 
 <h2 id="overview">
 
@@ -292,17 +303,6 @@ and release it even afterwards because I find {shinyalert} to be easier
 to use and to result in much nicer modals. There are also some extra
 features in {shinyalert}, such as the callback functions and the timer.
 But ultimately it’s a matter of convenience and aesthetics.
-
-<h2 id="sponsors">
-
-Sponsors 🏆
-
-</h2>
-
-> There are no sponsors yet
-
-[Become the first sponsor for
-{shinyalert}\!](https://github.com/sponsors/daattali/sponsorships?tier_id=39856)
 
 <h2>
 

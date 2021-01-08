@@ -2,10 +2,12 @@ Package: shinyalert
 Title: Easily Create Pretty Popup Messages (Modals) in 'Shiny'
 Version: 2.0.0.9000
 Authors@R: c(
-    person("Dean", "Attali", email = "daattali@gmail.com",
-      role = c("aut", "cre"), comment = "R interface"),
+    person("Dean", "Attali",
+        email = "daattali@gmail.com",
+        role = c("aut", "cre"),
+        comment = c(ORCID="0000-0002-5645-3493", "R interface")),
     person("Tristan", "Edwards", role = c("aut"),
-      comment = "sweetalert library"),
+        comment = "sweetalert library"),
     person("Zhengjia", "Wang", role = c("ctb"))
     )
 Description: Easily create pretty popup messages (modals) in 'Shiny'. A modal can
@@ -28,6 +30,5 @@ Suggests:
 License: MIT + file LICENSE
 LazyData: true
 Encoding: UTF-8
-VignetteBuilder: knitr
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
