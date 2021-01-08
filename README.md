@@ -16,8 +16,8 @@ Easily create pretty popup messages (modals) in Shiny <br><br>
 
 <p align="center">
 
-<a href="https://travis-ci.org/daattali/shinyalert">
-<img src="https://travis-ci.org/daattali/shinyalert.svg?branch=master" alt="Build Status" />
+<a href="https://github.com/daattali/shinyalert/actions">
+<img src="https://github.com/daattali/shinyalert/workflows/R-CMD-check/badge.svg" alt="R build status" />
 </a> <a href="https://cran.r-project.org/package=shinyalert">
 <img src="https://www.r-pkg.org/badges/version/shinyalert" alt="CRAN version" />
 </a>
