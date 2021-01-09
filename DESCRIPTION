@@ -24,8 +24,6 @@ Imports:
     uuid
 Suggests:
     colourpicker,
-    knitr,
-    rmarkdown,
     shinydisconnect
 License: MIT + file LICENSE
 LazyData: true

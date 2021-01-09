@@ -121,9 +121,7 @@ Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outp
 and you can specify custom code to run when a modal closes. See the
 \href{https://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
 online for examples or read the
-\href{https://github.com/daattali/shinyalert#readme}{full README}.\cr\cr
-\code{shinyalert} must be initialized with a call to
-\code{\link[shinyalert]{useShinyalert}} in the app's UI.
+\href{https://github.com/daattali/shinyalert#readme}{full README}.
 }
 \section{Simple input modals}{
 
@@ -228,7 +226,6 @@ if (interactive()) {
 
   shinyApp(
     ui = fluidPage(
-      useShinyalert(),  # Set up shinyalert
       actionButton("btn", "Click me")
     ),
     server = function(input, output) {
@@ -247,7 +244,6 @@ if (interactive()) {
 
   shinyApp(
     ui = fluidPage(
-      useShinyalert(),  # Set up shinyalert
       actionButton("btn", "Greet")
     ),
     server = function(input, output) {
@@ -268,7 +264,6 @@ if (interactive()) {
 
   shinyApp(
     ui = fluidPage(
-      useShinyalert(),  # Set up shinyalert
       actionButton("btn", "Go")
     ),
     server = function(input, output) {

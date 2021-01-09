@@ -5,9 +5,7 @@
 #' and you can specify custom code to run when a modal closes. See the
 #' \href{https://daattali.com/shiny/shinyalert-demo/}{demo Shiny app}
 #' online for examples or read the
-#' \href{https://github.com/daattali/shinyalert#readme}{full README}.\cr\cr
-#' \code{shinyalert} must be initialized with a call to
-#' \code{\link[shinyalert]{useShinyalert}} in the app's UI.
+#' \href{https://github.com/daattali/shinyalert#readme}{full README}.
 #'
 #' @param title The title of the modal.
 #' @param text The modal's text. Can either be simple text, or Shiny tags (including
@@ -159,7 +157,6 @@
 #'
 #'   shinyApp(
 #'     ui = fluidPage(
-#'       useShinyalert(),  # Set up shinyalert
 #'       actionButton("btn", "Click me")
 #'     ),
 #'     server = function(input, output) {
@@ -178,7 +175,6 @@
 #'
 #'   shinyApp(
 #'     ui = fluidPage(
-#'       useShinyalert(),  # Set up shinyalert
 #'       actionButton("btn", "Greet")
 #'     ),
 #'     server = function(input, output) {
@@ -199,7 +195,6 @@
 #'
 #'   shinyApp(
 #'     ui = fluidPage(
-#'       useShinyalert(),  # Set up shinyalert
 #'       actionButton("btn", "Go")
 #'     ),
 #'     server = function(input, output) {
@@ -276,6 +271,11 @@ shinyalert <- function(
   params[['imageHeight']] <- NULL
 
   session <- getSession()
+
+  if (is.null(session$userData$.shinyalert_added) || !session$userData$.shinyalert_added) {
+    shiny::insertUI("head", "beforeEnd", getDependencies(inline = FALSE), immediate = TRUE)
+    session$userData$.shinyalert_added <- TRUE
+  }
 
   if (immediate) {
     closeAlert()

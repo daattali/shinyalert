@@ -84,7 +84,7 @@ function(input, output, session) {
   output$code <- renderText({
     paste0(
       "library(shiny)\nlibrary(shinyalert)\n\n",
-      "ui <- fluidPage(\n  useShinyalert()\n)\n\n",
+      "ui <- fluidPage()\n\n",
       "server <- function(input, output) {\n  ",
       gsub("\n", "\n  ", code()),
       "\n}\n\nshinyApp(ui, server)"

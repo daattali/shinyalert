@@ -36,7 +36,6 @@ fluidPage(
              src="github-green-right.png",
              alt="Fork me on GitHub")
   ),
-  shinyalert::useShinyalert(),
 
   div(id = "header",
       div(id = "pagetitle",

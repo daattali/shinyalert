@@ -85,16 +85,13 @@ Example 4: [Chaining modals](#chaining)
 
 {shinyalert} uses the [sweetalert](https://github.com/t4t5/sweetalert) JavaScript library to create simple and elegant popups (modals) in Shiny.
 
-Simply call `shinyalert()` with the desired arguments, such as a title and text, and a modal will show up. In order to be able to call `shinyalert()` in a Shiny app, you must first call `useShinyalert()` anywhere in the app's UI.
-
-Here is a minimal Shiny app code that creates a modal:
+Simply call `shinyalert()` with the desired arguments, such as a title and text, and a modal will show up. Here is a minimal Shiny app code that creates a modal:
 
 ```
 library(shiny)
 library(shinyalert)
 
 ui <- fluidPage(
-  useShinyalert(),  # Set up shinyalert
   actionButton("preview", "Preview")
 )
 
@@ -187,7 +184,7 @@ shinyalert(
 
 <h2 id="rmd">Using in Rmarkdown files</h2>
 
-You can use {shinyalert} in Rmarkdown documents by using the `rmd = TRUE` parameter. This only works in interactive Rmd documents (when `runtime: shiny` is used in the YAML).
+You can use {shinyalert} in Rmarkdown documents as well. This only works in interactive Rmd documents (when `runtime: shiny` is used in the YAML).
 
 ````
 ---
@@ -202,12 +199,11 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 ```{r}
 library(shinyalert)
 
-useShinyalert(rmd = TRUE)
 textInput("name", "Name")
 actionButton("button", "Click me")
 
 observeEvent(input$button, {
- shinyalert(title = "Hey", text = input$name)
+  shinyalert(title = "Hey", text = input$name)
 })
 ```
 ````
