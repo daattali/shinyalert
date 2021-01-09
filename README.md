@@ -55,6 +55,7 @@ Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outp
 - [Callbacks](#callbacks)
 - [Chaining modals](#chaining)
 - [Using in Rmarkdown files](#rmd)
+- [Pre-loading the scripts](#useShinyalert)
 - [Comparison with Shiny modals](#shiny-comparison)
 
 <h2 id="examples">Examples</h2>
@@ -192,10 +193,6 @@ output: html_document
 runtime: shiny
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
-```
-
 ```{r}
 library(shinyalert)
 
@@ -207,6 +204,12 @@ observeEvent(input$button, {
 })
 ```
 ````
+
+<h2 id="useShinyalert">Pre-loading the scripts</h2>
+
+The first time a {shinyalert} message is shown, the required scripts are automatically inserted to the Shiny app. In real browsers (Chrome/Firefox/etc) this is not an issue, but in some contexts, such as inside RStudio's Viewer on some operating systems, this can sometimes cause the modal to appear glitchy for a brief moment until the scripts load.
+
+If you notice this behaviour and prefer to pre-load the scripts when the Shiny app initializes, you can call `useShinyalert(force=TRUE)` anywhere in the UI. If using an Rmarkdown file, call `useShinyalert(rmd=TRUE, force=TRUE)`. Note that calling `useShinyalert()` is NOT required.
 
 <h2 id="shiny-comparison">Comparison with Shiny modals</h2>
 

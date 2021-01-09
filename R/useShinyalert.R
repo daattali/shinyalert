@@ -1,11 +1,15 @@
 #' Set up a Shiny app to use shinyalert
 #'
 #' **This function is no longer needed.**\cr\cr
-#' When a {shinyalert} message is shown for the first time,
-#' the required scripts are automatically inserted to the Shiny app. If you want to pre-load
-#' these scripts into the app for performance reasons, you can call this function anywhere
-#' in the UI and use `force = TRUE`.\cr\cr
-#' Note that it is no longer needed to use this function.
+#' The first time a {shinyalert} message is shown, the required scripts are
+#' automatically inserted to the Shiny app. In real browsers (Chrome/Firefox/etc)
+#' this is not an issue, but in some contexts, such as inside RStudio's Viewer
+#' on some operating systems, this can sometimes cause the modal to appear glitchy
+#' for a brief moment until the scripts load.\cr\cr
+#' If you notice this behaviour and prefer to pre-load the scripts when the Shiny
+#' app initializes, you can call `useShinyalert(force=TRUE)` anywhere in the UI.
+#' If using an Rmarkdown file, call `useShinyalert(rmd=TRUE, force=TRUE)`. Note
+#' that calling `useShinyalert()` is NOT required.
 #'
 #' @param rmd Set this to \code{TRUE} if using \code{shinyalert}
 #' inside an interactive R markdown document. The YAML of the Rmd file must have
