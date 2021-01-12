@@ -209,7 +209,7 @@ observeEvent(input$button, {
 
 The first time a {shinyalert} message is shown, the required scripts are automatically inserted to the Shiny app. In real browsers (Chrome/Firefox/etc) this is not an issue, but in some contexts, such as inside RStudio's Viewer on some operating systems, this can sometimes cause the modal to appear glitchy for a brief moment until the scripts load.
 
-If you notice this behaviour and prefer to pre-load the scripts when the Shiny app initializes, you can call `useShinyalert(force=TRUE)` anywhere in the UI. If using an Rmarkdown file, call `useShinyalert(rmd=TRUE, force=TRUE)`. Note that calling `useShinyalert()` is NOT required.
+If you notice this behaviour and prefer to pre-load the scripts when the Shiny app initializes, you can call `useShinyalert(force=TRUE)` anywhere in the UI. Note that calling `useShinyalert()` is NOT required.
 
 <h2 id="shiny-comparison">Comparison with Shiny modals</h2>
 

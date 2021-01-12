@@ -273,7 +273,7 @@ shinyalert <- function(
   session <- getSession()
 
   if (is.null(session$userData$.shinyalert_added) || !session$userData$.shinyalert_added) {
-    shiny::insertUI("head", "beforeEnd", getDependencies(inline = FALSE), immediate = TRUE)
+    shiny::insertUI("head", "beforeEnd", getDependencies(), immediate = TRUE)
     session$userData$.shinyalert_added <- TRUE
   }
 

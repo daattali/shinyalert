@@ -1,6 +1,6 @@
 Package: shinyalert
 Title: Easily Create Pretty Popup Messages (Modals) in 'Shiny'
-Version: 2.0.0.9000
+Version: 2.0.0.9001
 Authors@R: c(
     person("Dean", "Attali",
         email = "daattali@gmail.com",
@@ -19,6 +19,7 @@ Depends:
     R (>= 3.0.2)
 Imports:
     htmltools,
+    knitr,
     shiny (>= 1.0.4),
     stats,
     uuid

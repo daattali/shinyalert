@@ -8,11 +8,18 @@ getSession <- function() {
   session
 }
 
-getDependencies <- function(inline = FALSE) {
+getDependencies <- function() {
   shiny::addResourcePath("shinyalert-assets",
                          system.file("www", package = "shinyalert"))
 
-  insert_into_doc <- if (inline) shiny::tagList else shiny::tags$head
+  runtime <- knitr::opts_knit$get("rmarkdown.runtime")
+  if (!is.null(runtime) && runtime == "shiny") {
+    # we're inside an Rmd document
+    insert_into_doc <- shiny::tagList
+  } else {
+    # we're in a shiny app
+    insert_into_doc <- shiny::tags$head
+  }
 
   shiny::singleton(
     insert_into_doc(

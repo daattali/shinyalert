@@ -4,12 +4,10 @@
 \alias{useShinyalert}
 \title{Set up a Shiny app to use shinyalert}
 \usage{
-useShinyalert(rmd = FALSE, force = FALSE)
+useShinyalert(rmd, force = FALSE)
 }
 \arguments{
-\item{rmd}{Set this to \code{TRUE} if using \code{shinyalert}
-inside an interactive R markdown document. The YAML of the Rmd file must have
-\code{runtime: shiny}.}
+\item{rmd}{Deprecated, do not use this parameter.}
 
 \item{force}{Set to \code{TRUE} to load the {shinyalert} scripts. If \code{FALSE} (default),
 you will get a warning saying this function is not required.}
@@ -19,7 +17,7 @@ Scripts that \code{shinyalert} requires that are automatically
 inserted to the app's \code{<head>} tag.
 }
 \description{
-\strong{This function is no longer needed.}\cr\cr
+\strong{This function is no longer required.}\cr\cr
 The first time a {shinyalert} message is shown, the required scripts are
 automatically inserted to the Shiny app. In real browsers (Chrome/Firefox/etc)
 this is not an issue, but in some contexts, such as inside RStudio's Viewer
@@ -27,8 +25,6 @@ on some operating systems, this can sometimes cause the modal to appear glitchy
 for a brief moment until the scripts load.\cr\cr
 If you notice this behaviour and prefer to pre-load the scripts when the Shiny
 app initializes, you can call \code{useShinyalert(force=TRUE)} anywhere in the UI.
-If using an Rmarkdown file, call \code{useShinyalert(rmd=TRUE, force=TRUE)}. Note
-that calling \code{useShinyalert()} is NOT required.
 }
 \examples{
 if (interactive()) {
