@@ -5,6 +5,11 @@
   overflow-wrap: break-word;
 }
 
+/* Remove the error section as it's unused but causes a vertical scrollbar when there are no buttons */
+.sweet-alert .sa-input-error {
+  display: none;
+}
+
 /* Try to make inputs look more similar to shiny inputs than sweetalert inputs */
 
 .sweet-alert .shiny-input-container input {
