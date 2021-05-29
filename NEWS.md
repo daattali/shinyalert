@@ -5,6 +5,7 @@
 - Fixed bug: tall modals did not have a scrollbar and you couldn't see the entire content (#44)
 - Fixed bug: long strings in the modal got cut off (#53)
 - Fixed bug: vertical scrollbar incorrectly appeared when dialog has no buttons (#49)
+- New feature: added `session` parameter to allow advanced uses of shinyalert where the Shiny session isn't immediately accessible (thanks @galachad)
 
 # shinyalert 2.0.0 (2020-09-11)
 

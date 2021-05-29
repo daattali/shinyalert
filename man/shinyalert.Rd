@@ -29,7 +29,8 @@ shinyalert(
   callbackJS = NULL,
   inputId = "shinyalert",
   size = "s",
-  immediate = FALSE
+  immediate = FALSE,
+  session = getSession()
 )
 }
 \arguments{
@@ -110,6 +111,8 @@ for small (default), \code{"m"} for medium, or \code{"l"} for large.}
 
 \item{immediate}{If \code{TRUE}, close any previously opened alerts and display
 the current one immediately.}
+
+\item{session}{Shiny session object (only for advanced users).}
 }
 \value{
 An ID that can be used by \code{\link{closeAlert}} to close this

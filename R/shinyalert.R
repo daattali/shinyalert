@@ -60,6 +60,7 @@
 #' for small (default), `"m"` for medium, or `"l"` for large.
 #' @param immediate If `TRUE`, close any previously opened alerts and display
 #' the current one immediately.
+#' @param session Shiny session object (only for advanced users).
 #'
 #' @return An ID that can be used by \code{\link{closeAlert}} to close this
 #' specific alert.
@@ -239,7 +240,8 @@ shinyalert <- function(
   callbackJS = NULL,
   inputId = "shinyalert",
   size = "s",
-  immediate = FALSE
+  immediate = FALSE,
+  session = getSession()
 ) {
 
   params <- as.list(environment())
@@ -270,7 +272,8 @@ shinyalert <- function(
   params[['imageWidth']] <- NULL
   params[['imageHeight']] <- NULL
 
-  session <- getSession()
+  # Remove parameters that shouldn't be passed to JavaScript
+  params[['session']] <- NULL
 
   if (is.null(session$userData$.shinyalert_added) || !session$userData$.shinyalert_added) {
     shiny::insertUI("head", "beforeEnd", getDependencies(), immediate = TRUE)
