@@ -120,17 +120,10 @@ shinyApp(ui, server)
 
 <h2 id="install">Installation</h2>
 
-To install the stable CRAN version:
+To install the latest version from CRAN:
 
 ```
 install.packages("shinyalert")
-```
-
-To install the latest development version from GitHub:
-
-```
-install.packages("remotes")
-remotes::install_github("daattali/shinyalert")
 ```
 
 <h2 id="input-modals">Simple input modals</h2>
