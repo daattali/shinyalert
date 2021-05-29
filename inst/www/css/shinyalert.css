@@ -2,6 +2,7 @@
 .sweet-alert{
   max-height: calc(100% - 20px);
   overflow-y: auto;
+  overflow-wrap: break-word;
 }
 
 /* Try to make inputs look more similar to shiny inputs than sweetalert inputs */

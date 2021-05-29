@@ -3,6 +3,7 @@
 - **BREAKING CHANGE** It's no longer required to call `useShinyalert()` in the UI. If you still want to explicitly pre-load the UI scripts, use `useShinyalert(force=TRUE)` (#47) 
 - **BREAKING CHANGE** The `rmd` parameter of `useShinyalert()` is no longer used. If you still want to call `useShinyalert()` (which you don't need to) then you have to remove the `rmd` argument
 - Fixed bug where tall modals did not have a scrollbar and you couldn't see the entire content (#44)
+- Fixed bug where long strings in the modal got cut off (#53)
 
 # shinyalert 2.0.0 (2020-09-11)
 
