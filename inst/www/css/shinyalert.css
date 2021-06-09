@@ -1,8 +1,16 @@
 /* Ensure the modal has a vertical scrollbar if it's too tall */
-.sweet-alert{
+.sweet-alert {
   max-height: calc(100% - 20px);
   overflow-y: auto;
   overflow-wrap: break-word;
+}
+
+/* Fix the look of radio buttons and checkboxes that are too big */
+.sweet-alert input[type="radio"],
+.sweet-alert input[type="checkbox"] {
+  height: auto;
+  margin-top: 4px;
+  width: auto;
 }
 
 /* Remove the error section as it's unused but causes a vertical scrollbar when there are no buttons */
