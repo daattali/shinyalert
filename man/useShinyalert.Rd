@@ -9,8 +9,8 @@ useShinyalert(rmd, force = FALSE)
 \arguments{
 \item{rmd}{Deprecated, do not use this parameter.}
 
-\item{force}{Set to \code{TRUE} to load the {shinyalert} scripts. If \code{FALSE} (default),
-you will get a warning saying this function is not required.}
+\item{force}{Set to \code{TRUE} to force pre-loading the {shinyalert} scripts. If
+\code{FALSE} (default), you will get a warning saying this function is not required.}
 }
 \value{
 Scripts that \code{shinyalert} requires that are automatically
@@ -19,12 +19,13 @@ inserted to the app's \code{<head>} tag.
 \description{
 \strong{This function is no longer required.}\cr\cr
 The first time a {shinyalert} message is shown, the required scripts are
-automatically inserted to the Shiny app. In real browsers (Chrome/Firefox/etc)
-this is not an issue, but in some contexts, such as inside RStudio's Viewer
-on some operating systems, this can sometimes cause the modal to appear glitchy
-for a brief moment until the scripts load.\cr\cr
-If you notice this behaviour and prefer to pre-load the scripts when the Shiny
-app initializes, you can call \code{useShinyalert(force=TRUE)} anywhere in the UI.
+\emph{automatically} inserted to the Shiny app. Usually this is not an issue, but
+in some unique cases this can sometimes cause the modal to appear glitchy
+(such as inside RStudio's Viewer, on some old browsers, or if the modal contains
+certain Shiny inputs).\cr\cr
+If you notice issues with the UI of the modal, you may want to try to pre-load
+the scripts when the Shiny app initializes by calling \code{useShinyalert(force=TRUE)}
+anywhere in the UI.
 }
 \examples{
 if (interactive()) {
