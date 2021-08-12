@@ -65,6 +65,9 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
     }, timer, swal_id);
   }
 
+  // Enable MathJax
+  MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+
   // Modals that need a scrollbar get initialized at the bottom, so let's scroll to top
   $('.sweet-alert')[0].scrollTop = 0;
 });
