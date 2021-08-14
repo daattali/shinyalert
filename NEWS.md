@@ -7,7 +7,7 @@
 - Fixed UI bug: vertical scrollbar incorrectly appeared when dialog has no buttons (#49)
 - Fixed UI bug: radio buttons and checkboxes did not render correctly (#55)
 - New feature: added `session` parameter to allow advanced uses of shinyalert where the Shiny session isn't immediately accessible (thanks @galachad)
-- New feature: `shinyalert` now supports MathJax to render equations, provided that `withMathJax()` is put in the UI (#54).
+- New feature: added support for MathJax to render equations (need to call `withMathJax()` in the UI) (#54)
 
 # shinyalert 2.0.0 (2020-09-11)
 
