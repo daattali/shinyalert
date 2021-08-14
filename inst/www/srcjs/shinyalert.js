@@ -66,7 +66,7 @@ Shiny.addCustomMessageHandler('shinyalert.show', function(params) {
   }
 
   // Enable MathJax
-  if (window.MathJax) {
+  if (typeof window.MathJax !== 'undefined') {
     MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
   }
 
