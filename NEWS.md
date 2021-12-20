@@ -1,4 +1,4 @@
-# Unreleased version
+# shinyalert 3.0.0 (2021-12-20)
 
 - **BREAKING CHANGE** It's no longer required to call `useShinyalert()` in the UI. If you still want to explicitly pre-load the UI scripts, use `useShinyalert(force=TRUE)` (#47) 
 - **BREAKING CHANGE** The `rmd` parameter of `useShinyalert()` is no longer used. If you still want to call `useShinyalert()` (which you don't need to) then you have to remove the `rmd` argument
