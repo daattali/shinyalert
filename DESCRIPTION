@@ -27,7 +27,6 @@ Suggests:
     colourpicker,
     shinydisconnect
 License: MIT + file LICENSE
-LazyData: true
 Encoding: UTF-8
 RoxygenNote: 7.1.1
 Roxygen: list(markdown = TRUE)
