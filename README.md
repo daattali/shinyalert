@@ -69,6 +69,7 @@ Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outp
 - [Using in Rmarkdown files](#rmd)
 - [Pre-loading the scripts](#useShinyalert)
 - [Comparison with Shiny modals](#shiny-comparison)
+- [Known issues](#known-issues)
 
 <h2 id="examples">Examples</h2>
 
@@ -225,6 +226,10 @@ Yes, it does.
 And Shiny's modals are just fine.
 
 I created {shinyalert} for two reasons: first of all, I started working on it well before Shiny had modals. But I decided to keep working on it and release it even afterwards because I find {shinyalert} to be easier to use and to result in much nicer modals. There are also some extra features in {shinyalert}, such as the callback functions and the timer. But ultimately it's a matter of convenience and aesthetics.
+
+<h2 id="known-issues">Known issues</h2>
+
+- Clicking any `<button>` tag inside a modal will close the modal. This is due to the underlying JavaScript library having this issue. This means that, for example, using radio buttons from {shinyWidgets} wil cause this bug because their radio buttons are implemented using `<button>`.
 
 <h2>Credits</h2>
 
