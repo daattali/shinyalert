@@ -229,7 +229,8 @@ I created {shinyalert} for two reasons: first of all, I started working on it we
 
 <h2 id="known-issues">Known issues</h2>
 
-- Clicking any `<button>` tag inside a modal will close the modal. This is due to the underlying JavaScript library having this issue. This means that, for example, using radio buttons from {shinyWidgets} wil cause this bug because their radio buttons are implemented using `<button>`.
+- Clicking any `<button>` tag inside a modal will close the modal. This is due to the underlying JavaScript library having this issue. This means that, for example, using radio buttons from {shinyWidgets} will cause this bug because their radio buttons are implemented using `<button>`.
+- Chaining modals works fine when the modals contain only text, but when inputs or buttons are involved in chained modals, you may run into an issue such as [this one](https://github.com/daattali/shinyalert/issues/46) or [this one](https://github.com/daattali/shinyalert/issues/48).
 
 <h2>Credits</h2>
 
