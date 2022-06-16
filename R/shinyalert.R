@@ -301,7 +301,7 @@ shinyalert <- function(
   }
 
 
-  if (html && nzchar(params[["text"]])) {
+  if (html && !is.null(params[["text"]]) && (length(params[["text"]]) > 1 || nzchar(as.character(params[["text"]])))) {
     if (type == "input") {
       stop("Cannot use 'input' type and HTML together. You must supply your own Shiny inputs when using HTML.", call. = FALSE)
     }
