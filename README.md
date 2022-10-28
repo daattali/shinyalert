@@ -1,22 +1,21 @@
 <p align="center">
+  <h3 align="center">shinyalert</h3>
+  <h4 align="center">
+    🗯️ Easily create pretty popup messages (modals) in Shiny
+    <br><br>
+    <a href="https://daattali.com/shiny/shinyalert-demo/">Demo</a>
+    &middot;
+    by <a href="https://deanattali.com">Dean Attali</a>
+  </h4>
 
-<h3 align="center">shinyalert</h3>
-
-<h4 align="center">Easily create pretty popup messages (modals) in Shiny
-<br><br>
-<a href="https://daattali.com/shiny/shinyalert-demo/">Demo</a>
-&middot;
-by <a href="https://deanattali.com">Dean Attali</a>
-</h4>
-
-<p align="center">
-<a href="https://github.com/daattali/shinyalert/actions">
-<img src="https://github.com/daattali/shinyalert/workflows/R-CMD-check/badge.svg" alt="R build status" />
-</a>
-<a href="https://cran.r-project.org/package=shinyalert">
-<img src="https://www.r-pkg.org/badges/version/shinyalert" alt="CRAN version" />
-</a>
-</p>
+  <p align="center">
+    <a href="https://github.com/daattali/shinyalert/actions">
+      <img src="https://github.com/daattali/shinyalert/workflows/R-CMD-check/badge.svg" alt="R build status" />
+    </a> 
+    <a href="https://cran.r-project.org/package=shinyalert">
+      <img src="https://www.r-pkg.org/badges/version/shinyalert" alt="CRAN version" />
+    </a>
+  </p>
 
 </p>
 
@@ -29,20 +28,18 @@ by <a href="https://deanattali.com">Dean Attali</a>
 Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outputs (such as plots and tables). A modal can also have a timer to close automatically, and you can specify custom code to run when a modal closes. See the [demo Shiny app](https://daattali.com/shiny/shinyalert-demo/) online for examples.
 
 **Need Shiny help? [I'm available for consulting](https://attalitech.com/).**<br/>
-**If you find {shinyalert} useful, please consider [supporting my work](https://github.com/sponsors/daattali) to unlock rewards\! ❤**
+**If you find {shinyalert} useful, please consider [supporting my work](https://github.com/sponsors/daattali)! ❤**
 
 <p align="center">
-
-<a style="display: inline-block;" href="https://github.com/sponsors/daattali">
-<img height="35" src="https://i.imgur.com/034B8vq.png" /> </a>
-
-<a style="display: inline-block;" href="https://paypal.me/daattali">
-<img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
-</a>
-
+  <a style="display: inline-block;" href="https://github.com/sponsors/daattali">
+    <img height="35" src="https://i.imgur.com/034B8vq.png" />
+  </a>
+  <a style="display: inline-block;" href="https://paypal.me/daattali">
+    <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
+  </a>
 </p>
 
-> This package is part of a larger ecosystem of packages with a shared vision: solving common Shiny issues and improving Shiny apps with minimal effort, minimal code changes, and straightforward documentation. Other packages for your Shiny apps:
+> This package is part of a larger ecosystem of packages with a shared vision: solving common Shiny issues and improving Shiny apps with minimal effort, minimal code changes, and clear documentation. Other packages for your Shiny apps:
 
 | Package | Description | Demo |
 |---|---|---|
@@ -53,6 +50,8 @@ Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outp
 | [colourpicker](https://github.com/daattali/colourpicker/) | 🎨 A colour picker tool for Shiny and for selecting colours in plots | [🔗](https://daattali.com/shiny/colourInput/) |
 | [shinybrowser](https://github.com/daattali/shinybrowser/) | 🌐 Find out information about a user's web browser in Shiny apps | [🔗](https://daattali.com/shiny/shinybrowser-demo/) |
 | [shinydisconnect](https://github.com/daattali/shinydisconnect/) | 🔌 Show a nice message when a Shiny app disconnects or errors | [🔗](https://daattali.com/shiny/shinydisconnect-demo/) |
+| [shinytip](https://github.com/daattali/shinytip/) | 💬 Simple flexible tooltips for Shiny apps | WIP |
+| [shinymixpanel](https://github.com/daattali/shinymixpanel/) | 🔍 Track user interactions with Mixpanel in Shiny apps or R scripts | WIP |
 | [shinyforms](https://github.com/daattali/shinyforms/) | 📝 Easily create questionnaire-type forms with Shiny | WIP |
 
 # Table of contents
