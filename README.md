@@ -1,22 +1,19 @@
+<h3 align="center">shinyalert</h3>
+<h4 align="center">
+  🗯️ Easily create pretty popup messages (modals) in Shiny
+  <br><br>
+  <a href="https://daattali.com/shiny/shinyalert-demo/">Demo</a>
+  &middot;
+  by <a href="https://deanattali.com">Dean Attali</a>
+</h4>
+
 <p align="center">
-  <h3 align="center">shinyalert</h3>
-  <h4 align="center">
-    🗯️ Easily create pretty popup messages (modals) in Shiny
-    <br><br>
-    <a href="https://daattali.com/shiny/shinyalert-demo/">Demo</a>
-    &middot;
-    by <a href="https://deanattali.com">Dean Attali</a>
-  </h4>
-
-  <p align="center">
-    <a href="https://github.com/daattali/shinyalert/actions">
-      <img src="https://github.com/daattali/shinyalert/workflows/R-CMD-check/badge.svg" alt="R build status" />
-    </a> 
-    <a href="https://cran.r-project.org/package=shinyalert">
-      <img src="https://www.r-pkg.org/badges/version/shinyalert" alt="CRAN version" />
-    </a>
-  </p>
-
+  <a href="https://github.com/daattali/shinyalert/actions">
+    <img src="https://github.com/daattali/shinyalert/workflows/R-CMD-check/badge.svg" alt="R build status" />
+  </a> 
+  <a href="https://cran.r-project.org/package=shinyalert">
+    <img src="https://www.r-pkg.org/badges/version/shinyalert" alt="CRAN version" />
+  </a>
 </p>
 
 ---
