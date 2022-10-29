@@ -119,8 +119,17 @@ shinyApp(ui, server)
 
 To install the latest version from CRAN:
 
-```
+**For most users:** To install the stable CRAN version:
+
+```r
 install.packages("shinyalert")
+```
+
+**For advanced users:** To install the latest development version from GitHub:
+
+```r
+install.packages("remotes")
+remotes::install_github("daattali/shinyalert")
 ```
 
 <h2 id="input-modals">Simple input modals</h2>
