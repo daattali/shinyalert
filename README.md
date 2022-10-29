@@ -117,8 +117,6 @@ shinyApp(ui, server)
 
 <h2 id="install">Installation</h2>
 
-To install the latest version from CRAN:
-
 **For most users:** To install the stable CRAN version:
 
 ```r
