@@ -143,7 +143,7 @@ While simple input modals are useful for retrieving input from the user, they ar
 ```
 shinyalert(html = TRUE, text = tagList(
   textInput("name", "What's your name?", "Dean"),
-  numericInput("age", "How old are you?", 30),
+  numericInput("age", "How old are you?", 30)
 ))
 ```
 

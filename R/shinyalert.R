@@ -276,7 +276,7 @@ shinyalert <- function(
   params[['session']] <- NULL
 
   if (is.null(session$userData$.shinyalert_added) || !session$userData$.shinyalert_added) {
-    shiny::insertUI("head", "beforeEnd", getDependencies(), immediate = TRUE)
+    shiny::insertUI("head", "beforeEnd", immediate = TRUE, ui = getDependencies())
     session$userData$.shinyalert_added <- TRUE
   }
 
@@ -300,21 +300,12 @@ shinyalert <- function(
     params[['callbackR']] <- TRUE
   }
 
-
   if (html && !is.null(params[["text"]]) && (length(params[["text"]]) > 1 || nzchar(as.character(params[["text"]])))) {
     if (type == "input") {
       stop("Cannot use 'input' type and HTML together. You must supply your own Shiny inputs when using HTML.", call. = FALSE)
     }
 
-    shiny::insertUI(
-      "head", "beforeEnd", immediate = FALSE,
-      shiny::tags$head(
-        htmltools::attachDependencies(
-          "",
-          htmltools::findDependencies(params[["text"]])
-        )
-      )
-    )
+    shiny::insertUI("head", "beforeEnd", immediate = FALSE, ui = htmltools::findDependencies(params[["text"]]))
     params[["text"]] <- as.character(params[["text"]])
   }
 
