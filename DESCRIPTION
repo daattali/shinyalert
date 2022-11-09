@@ -19,7 +19,6 @@ Depends:
     R (>= 3.0.2)
 Imports:
     htmltools,
-    knitr,
     shiny (>= 1.0.4),
     stats,
     uuid
