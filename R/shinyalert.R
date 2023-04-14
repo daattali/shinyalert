@@ -278,6 +278,7 @@ shinyalert <- function(
   if (is.null(session$userData$.shinyalert_added) || !session$userData$.shinyalert_added) {
     shiny::insertUI("head", "beforeEnd", immediate = TRUE, ui = getDependencies())
     session$userData$.shinyalert_added <- TRUE
+    Sys.sleep(0.1) # hacky workaround for issue https://github.com/daattali/shinyalert/issues/74
   }
 
   if (immediate) {
