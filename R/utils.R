@@ -15,8 +15,8 @@ getDependencies <- function() {
       version = "1.0.1",
       package = "shinyalert",
       src = "assets/lib/sweetalert-1.0.1",
-      script = "js/sweetalert.min.js",
-      stylesheet = "css/sweetalert.min.css"
+      script = "js/sweetalert.dev.js",
+      stylesheet = "css/sweetalert.css"
     ),
     htmltools::htmlDependency(
       name = "swalservice-js",
