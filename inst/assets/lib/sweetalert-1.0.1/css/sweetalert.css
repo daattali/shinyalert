@@ -20,10 +20,11 @@ body.stop-scrolling {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: calc(100% - 40px);
   top: 0;
+  z-index: 9999999;
 }
 
 .sweet-alert {
