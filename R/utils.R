@@ -23,7 +23,7 @@ getDependencies <- function() {
       version = "1.0.0",
       package = "shinyalert",
       src = "assets/lib/swalservice",
-      script = "swalservice.js"
+      script = "swalservice.min.js"
     ),
     htmltools::htmlDependency(
       name = "shinyalert-binding",
