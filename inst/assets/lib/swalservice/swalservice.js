@@ -78,6 +78,7 @@ SwalService.prototype = {
     if (service.pendingSwal.length > 0) {
       var pending = service.pendingSwal.shift();
       service._swalWithId(pending);
+      Shiny.bindAll($(".sweet-alert"));
     }
   },
 
