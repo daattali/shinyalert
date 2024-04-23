@@ -2,6 +2,7 @@
 
 - Use `htmlDependency()` instead of `addResourcePath()` which is more robust and works in Rmd naturally (#71)
 - Don't show warning in R 4.2.0 when `text` is a list (#68)
+- Fixed problem with queued shinyalerts not binding properly (#48 and #46)
 
 # shinyalert 3.0.0 (2021-12-20)
 
