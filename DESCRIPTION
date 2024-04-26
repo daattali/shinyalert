@@ -20,7 +20,6 @@ Depends:
 Imports:
     htmltools (>= 0.3.5),
     shiny (>= 1.0.4),
-    stats,
     uuid
 Suggests:
     colourpicker,
