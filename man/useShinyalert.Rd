@@ -9,7 +9,7 @@ useShinyalert(rmd, force = FALSE)
 \arguments{
 \item{rmd}{Deprecated, do not use this parameter.}
 
-\item{force}{Set to \code{TRUE} to force pre-loading the {shinyalert} scripts. If
+\item{force}{Set to \code{TRUE} to force pre-loading the \{shinyalert\} scripts. If
 \code{FALSE} (default), you will get a warning saying this function is not required.}
 }
 \value{
@@ -18,7 +18,7 @@ inserted to the app's \code{<head>} tag.
 }
 \description{
 \strong{This function is no longer required.}\cr\cr
-The first time a {shinyalert} message is shown, the required scripts are
+The first time a \{shinyalert\} message is shown, the required scripts are
 \emph{automatically} inserted to the Shiny app. Usually this is not an issue, but
 in some unique cases this can sometimes cause the modal to appear glitchy
 (such as inside RStudio's Viewer, on some old browsers, or if the modal contains

@@ -156,7 +156,7 @@ example, the following code would produce a modal with two inputs:
 
 \section{Modal return value}{
 
-Modals created with {shinyalert} have a return value when they exit.
+Modals created with \{shinyalert\} have a return value when they exit.
 
 When using a simple input modal (\code{type="input"}), the value of the modal is
 the value the user entered. Otherwise, the value of the modal is \code{TRUE} if
@@ -177,7 +177,7 @@ and \code{callbackJS} functions (if a \code{callbackR} or \code{callbackJS} argu
 are provided). These functions get called (in R and in JavaScript, respectively)
 when the modal exits.
 
-For example, using the following {shinyalert} code will result in a modal with
+For example, using the following \{shinyalert\} code will result in a modal with
 an input field. After the user clicks "OK", a hello message will be printed
 to both the R console and in a native JavaScript alert box. You don't need to
 provide both callback functions, but in this example both are used for

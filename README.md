@@ -31,9 +31,6 @@ Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outp
   <a style="display: inline-block;" href="https://github.com/sponsors/daattali">
     <img height="35" src="https://i.imgur.com/034B8vq.png" />
   </a>
-  <a style="display: inline-block;" href="https://paypal.me/daattali">
-    <img height="35" src="https://camo.githubusercontent.com/0e9e5cac101f7093336b4589c380ab5dcfdcbab0/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f74776f6c66736f6e2f70617970616c2d6769746875622d627574746f6e40312e302e302f646973742f627574746f6e2e737667" />
-  </a>
 </p>
 
 > This package is part of a larger ecosystem of packages with a shared vision: solving common Shiny issues and improving Shiny apps with minimal effort, minimal code changes, and clear documentation. Other packages for your Shiny apps:

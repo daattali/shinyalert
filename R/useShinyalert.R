@@ -1,7 +1,7 @@
 #' Set up a Shiny app to use shinyalert
 #'
 #' **This function is no longer required.**\cr\cr
-#' The first time a {shinyalert} message is shown, the required scripts are
+#' The first time a \{shinyalert\} message is shown, the required scripts are
 #' *automatically* inserted to the Shiny app. Usually this is not an issue, but
 #' in some unique cases this can sometimes cause the modal to appear glitchy
 #' (such as inside RStudio's Viewer, on some old browsers, or if the modal contains
@@ -11,7 +11,7 @@
 #' anywhere in the UI.
 #'
 #' @param rmd Deprecated, do not use this parameter.
-#' @param force Set to `TRUE` to force pre-loading the {shinyalert} scripts. If
+#' @param force Set to `TRUE` to force pre-loading the \{shinyalert\} scripts. If
 #' `FALSE` (default), you will get a warning saying this function is not required.
 #' @return Scripts that \code{shinyalert} requires that are automatically
 #' inserted to the app's \code{<head>} tag.
