@@ -1,3 +1,7 @@
+# Unreleased version
+
+- Run the bundled demo with `shiny::runExample("demo", package = "shinyalert")` on Shiny 1.8.1 or later (#87).
+
 # shinyalert 3.1.0 (2024-04-26)
 
 - Fixed bug where Shiny inputs and outputs did not work correctly when shinyalerts were chained together (#48 and #46)

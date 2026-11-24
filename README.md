@@ -24,6 +24,13 @@
 
 Modals can contain text, images, OK/Cancel buttons, Shiny inputs, and Shiny outputs (such as plots and tables). A modal can also have a timer to close automatically, and you can specify custom code to run when a modal closes. See the [demo Shiny app](https://daattali.com/shiny/shinyalert-demo/) online for examples.
 
+To run the demo locally with Shiny 1.8.1 or later, install `colourpicker` and
+`shinydisconnect`, then run:
+
+```r
+shiny::runExample("demo", package = "shinyalert")
+```
+
 **Need Shiny help? [I'm available for consulting](https://attalitech.com/).**<br/>
 **If you find {shinyalert} useful, please consider [supporting my work](https://github.com/sponsors/daattali)! ❤**
 

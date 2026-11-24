@@ -13,3 +13,8 @@ The demo app is also
 \href{https://daattali.com/shiny/shinyalert-demo/}{available online}
 to experiment with.
 }
+\details{
+With Shiny 1.8.1 or later, use
+\code{shiny::runExample("demo", package = "shinyalert")}.
+This wrapper also works with earlier Shiny versions.
+}
